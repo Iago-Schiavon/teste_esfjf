@@ -421,6 +421,7 @@ img {
     background-color: rgb(49, 175, 60); /* Tom mais escuro do verde */
     transform: translateY(-2px); /* Efeito de "levantar" */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-decoration: none;
 }
 
 /*IMAGE GRID -----------------------------------------------------------------------------*/
@@ -680,7 +681,7 @@ img.hover-shadow {
 
 /* Efeito simples ao passar o mouse no link */
 #contact a:hover {
-    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+    text-decoration: none;
     transform: scale(1.05); /* Leve aumento */
 }
 
