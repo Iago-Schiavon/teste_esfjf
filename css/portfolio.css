@@ -17,6 +17,49 @@ img {
     height:auto;
 }
 
+/* ===================================================
+   STICKY FOOTER (Rodapé Fixo com Flexbox)
+   =================================================== */
+
+/* 1. Transforma o .main (que já tem a sidenav)
+      num contêiner flexível */
+.main {
+    margin-left: 20%; /* Mesmo que a largura do sidenav (original) */
+
+    /* NOSSAS NOVAS REGRAS */
+    display: flex;           /* Ativa o Flexbox */
+    flex-direction: column;  /* Itens ficarão em coluna */
+    
+    /* Faz o .main ter, no mínimo, 100% da altura da tela */
+    min-height: 100vh; 
+}
+
+/* 2. Esta é a nova <div> que criámos */
+.main-content-wrapper {
+    /* Diz a este "embrulho" para crescer e ocupar
+       todo o espaço vertical vago que existir. */
+    flex-grow: 1;
+}
+
+/* FOOTER */
+.footer {
+    /* Removemos o margin-top horrível */
+    /* margin-top: 3000px; <-- REMOVIDO */
+
+    text-align: center;
+    font-size: 1.2em; /* Um pouco menor */
+    font-weight: bold;
+    color: rgb(10, 10, 10);
+    
+    /* Adiciona um preenchimento para não ficar colado
+       no fundo */
+    padding: 20px; 
+
+    /* Define um fundo para ele (opcional, mas bom) */
+    background-color: #f1f1f1; 
+    
+}
+
 /* HEADER */
 .header {
     background-color: rgb(61, 216, 74);
@@ -55,15 +98,6 @@ img {
 .header a:hover {
     filter:drop-shadow(0px 0px 4px white);
 }*/
-
-/* FOOTER */
-.footer {
-    margin-top: 3000px;
-    text-align: center;
-    font-size: 1.4em;
-    font-weight: bold;
-    color: rgb(10, 10, 10);
-}
 
 /* RESPONSIVE -----------------------------------------------------------------------*/
 .responsive {
@@ -458,6 +492,11 @@ img.hover-shadow {
     /* 2. Ajusta o Conteúdo Principal (Main) */
     .main {
         margin-left: 0; /* Remove a margem esquerda de 20% */
+        
+        /* As regras de flexbox permanecem ativas! */
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
     }
 
     /* 3. Ajusta o grid de imagens */
