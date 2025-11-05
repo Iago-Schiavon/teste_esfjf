@@ -59,44 +59,91 @@ img {
     background-color: #f1f1f1; */
 }
 
-/* HEADER */
+/* ===================================================
+   HEADER (Design Moderno e Dinâmico)
+   =================================================== */
+
 .header {
-    background-color: rgb(61, 216, 74);
-    height: 200px;
-    color: white;
+    /* 1. LAYOUT (FLEXBOX) */
+    display: flex;
+    justify-content: space-between; /* Mágica: joga os filhos para os cantos */
+    align-items: center;           /* Alinha verticalmente no centro */
+
+    /* 2. DESIGN (Clean) */
+    /* Removemos a altura fixa! O padding agora define o tamanho */
+    /* height: 200px; <-- REMOVIDO */
+    padding: 30px 40px; /* 30px em cima/baixo, 40px nas laterais */
+    
+    /* Removemos o verde. Usamos um fundo branco
+       e uma borda inferior sutil para separar */
+    background-color: #ffffff; 
+    border-bottom: 1px solid #e0e0e0; 
+    
+    /* O texto agora será escuro */
+    color: #333; 
 }
 
-.header p{
-    padding-top: 10px;
-    margin-left: 15px;
+/* --- Bloco da Esquerda: Título e Saudação --- */
+.header-content {
+    /* Não precisa de nada especial, 
+       o flexbox pai já o alinha. */
+}
+
+.header-content h2 {
+    /* Título principal (Portfólio de Projetos) */
+    margin: 0; /* Remove margens */
     font-size: 1.8em;
     font-weight: 600;
+    color: #222;
 }
 
-.header h4{
-    float: right;
-    margin-right: 15px;
-    padding-top: 10px;
-    font-size: 1.7em;
+.header-content p#greeting {
+    /* Saudação (Bom dia...) */
+    margin: 0 0 5px 0; /* Espaço abaixo da saudação */
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #555; /* Cor mais suave */
+}
+
+/* --- Bloco da Direita: Data --- */
+.header-date {
+    /* Alinha o texto da data à direita */
+    text-align: right;
+}
+
+.header-date h4 {
+    /* Removemos o 'float' e o 'padding' antigo */
+    /* float: right; <-- REMOVIDO */
+    margin: 0;
+    font-size: 1.1em;
     font-weight: 500;
-}
-/*
-.header a{
-    padding-top: 30px;
-    margin-left: 15px;
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 12px;
-    text-decoration: none;
-    font-size: 1.4em;
-    font-weight: bold;
+    color: #666;
 }
 
-.header a:hover {
-    filter:drop-shadow(0px 0px 4px white);
-}*/
+/* --- RESPONSIVIDADE DO HEADER --- */
+/*
+  Em telas pequenas (600px ou menos),
+  o layout "space-between" fica ruim.
+  Vamos empilhar (column) o conteúdo.
+*/
+@media screen and (max-width: 600px) {
+    .header {
+        flex-direction: column;    /* Empilha os blocos */
+        align-items: flex-start; /* Alinha tudo à esquerda */
+        padding: 20px;
+    }
+
+    .header-date {
+        /* Coloca a data abaixo, com espaço */
+        margin-top: 15px;
+        width: 100%;
+        text-align: left; /* Alinha a data à esquerda também */
+    }
+    
+    .header-date h4 {
+        text-align: left;
+    }
+}
 
 /* RESPONSIVE -----------------------------------------------------------------------*/
 .responsive {
@@ -273,6 +320,102 @@ img {
         padding: 8px 15px;
         margin: 2px 0;
     }
+}
+
+/* ===================================================
+   ESTILOS DA SEÇÃO "ABOUT" (Sobre Nós)
+   =================================================== */
+
+#about {
+    /* 1. LAYOUT (FLEXBOX)
+       Isso ativa o Flexbox e prepara o layout de 2 colunas */
+    display: flex;
+    align-items: center; /* Alinha a imagem e o texto verticalmente */
+
+    /* 2. RESPONSIVIDADE FLUIDA (A Mágica!)
+       'flex-wrap: wrap' permite que as colunas "quebrem"
+       e empilhem quando não houver mais espaço.
+    */
+    flex-wrap: wrap;
+
+    /* 3. DESIGN (Clean)
+       Um espaçamento generoso e fundo branco */
+    padding: 60px 40px;
+    background-color: #ffffff;
+    color: #333; /* Garante que o texto seja escuro */
+
+    /* Um espaço elegante entre a imagem e o texto */
+    gap: 40px; 
+}
+
+/* --- Coluna da Esquerda (Imagem) --- */
+.about-image {
+    /* Define que a imagem tentará ter 350px,
+       mas pode crescer (1) ou encolher (1) */
+    flex: 1 1 350px; 
+}
+
+.about-image img {
+    /* Garante que a imagem seja responsiva */
+    width: 100%;
+    height: auto;
+    
+    /* Estética */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra suave */
+}
+
+/* --- Coluna da Direita (Texto) --- */
+.about-text {
+    /* Define que o texto tentará ter 400px
+       e crescerá (2) duas vezes mais rápido que a imagem.
+       Isso dá mais espaço ao texto. */
+    flex: 2 1 400px;
+}
+
+.about-text h2 {
+    /* Título "Sobre Nós" */
+    font-size: 2.4em;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.about-text h3 {
+    /* Subtítulo "Engenheiros Sem Fronteiras..." */
+    font-size: 1.4em;
+    font-weight: 500;
+    color: rgb(61, 216, 74); /* Usando o verde original! */
+    margin-bottom: 25px;
+}
+
+.about-text p {
+    /* Parágrafos de texto */
+    font-size: 1.1em;
+    line-height: 1.6; /* Espaçamento entre linhas (melhora leitura) */
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* --- Estilo do Botão "Faça Parte" --- */
+.btn-about {
+    display: inline-block;
+    background-color: rgb(61, 216, 74); /* Verde original */
+    color: #ffffff; /* Texto branco */
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s, transform 0.2s;
+    text-transform: uppercase; /* Opcional: deixa em maiúsculo */
+}
+
+.btn-about:hover {
+    background-color: rgb(49, 175, 60); /* Tom mais escuro do verde */
+    transform: translateY(-2px); /* Efeito de "levantar" */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 /*IMAGE GRID -----------------------------------------------------------------------------*/
