@@ -15,7 +15,7 @@ exports.handler = async (event, context) => {
   const SITE_ID = process.env.SITE_ID; // <--- A MUDANÇA!
   
   // 2. O nome do formulário que queremos encontrar
-  const FORM_NAME = "pedidos-esf-v2";
+  const FORM_NAME = "pedidos-esf";
 
   // 3. Monta a NOVA URL da API
   //    (Esta URL pede TODOS os formulários do site)
