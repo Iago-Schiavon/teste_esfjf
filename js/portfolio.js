@@ -134,3 +134,71 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 });
+
+/* ===================================================
+   SCRIPT DA FILA DE ESPERA (Polling)
+   =================================================== */
+
+// Espera o documento carregar
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // Encontra o local no HTML onde vamos exibir a contagem
+    const displayElement = document.getElementById("fila-display");
+
+    // Se o elemento não existir na página, não faz nada.
+    if (!displayElement) {
+        return;
+    }
+
+    // Esta é a função que busca os dados
+    async function atualizarFila() {
+        
+        try {
+            // 1. O URL da nossa "Netlify Function"
+            //    O Netlify sabe que isso aponta para
+            //    netlify/functions/get-fila.js
+            const url = "/.netlify/functions/get-fila";
+
+            // 2. Chama a função
+            const response = await fetch(url);
+            
+            // Se a resposta não for OK, avisa no console
+            if (!response.ok) {
+                throw new Error("Erro de rede ao buscar a fila.");
+            }
+
+            // 3. Pega os dados (o objeto { "total": 10 })
+            const data = await response.json();
+
+            // 4. Atualiza o HTML
+            const total = data.total;
+            
+            if (total == 0) {
+                 displayElement.textContent = "Nenhum pedido na fila!";
+            } else if (total == 1) {
+                 displayElement.textContent = "1 pedido na fila";
+            } else {
+                 displayElement.textContent = `${total} pedidos na fila`;
+            }
+            
+            // Para a animação de "pulso" quando o número carregar
+            displayElement.style.animation = 'none';
+
+        } catch (error) {
+            // Se der erro (ex: a função falhou)
+            console.error("Erro ao atualizar a fila:", error);
+            displayElement.textContent = "Erro ao carregar fila";
+            displayElement.style.backgroundColor = "#c0392b"; // Fica vermelho
+        }
+    }
+
+    // --- Execução ---
+
+    // 1. Chama a função IMEDIATAMENTE ao carregar a página
+    atualizarFila();
+
+    // 2. E então, define um "timer" (Polling) para chamar
+    //    a função novamente a cada 30 segundos (30000 ms)
+    setInterval(atualizarFila, 30000);
+
+});

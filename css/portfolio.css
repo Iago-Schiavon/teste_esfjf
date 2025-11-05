@@ -424,6 +424,63 @@ img {
     text-decoration: none;
 }
 
+/* ===================================================
+   ESTILOS DA SEÇÃO DE FILA DE ESPERA
+   =================================================== */
+
+#fila-container {
+    padding: 40px 20px;
+    background-color: #f4f4f4; /* Um fundo levemente cinza */
+    text-align: center;
+    color: #333;
+}
+
+.fila-conteudo {
+    max-width: 800px;
+    margin: 0 auto; /* Centraliza o conteúdo */
+}
+
+.fila-conteudo h3 {
+    font-size: 2em;
+    font-weight: 700;
+    color: #222;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.fila-conteudo p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    color: #555;
+}
+
+/* Este é o "display" principal onde o número aparece */
+#fila-display {
+    display: inline-block;
+    background-color: rgb(49, 175, 60); /* Verde do ESF */
+    color: #ffffff;
+    padding: 20px 35px;
+    border-radius: 8px;
+    font-size: 1.8em;
+    font-weight: 600;
+    
+    /* Uma pequena animação de "pulso" */
+    animation: pulso 2s infinite;
+}
+
+/* Animação para o display */
+@keyframes pulso {
+    0% {
+        box-shadow: 0 0 0 0 rgba(49, 175, 60, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(49, 175, 60, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(49, 175, 60, 0);
+    }
+}
+
 /*IMAGE GRID -----------------------------------------------------------------------------*/
 .row {
     margin: 8px 8px;
