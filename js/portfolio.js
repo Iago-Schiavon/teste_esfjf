@@ -150,55 +150,41 @@ document.addEventListener("DOMContentLoaded", function() {
         return;
     }
 
-    // Esta é a função que busca os dados
-    /*
- * Substitua a função 'atualizarFila' antiga por esta
- */
+
 async function atualizarFila() {
-    
-    // O 'displayElement' é a caixa na tela
-    const displayElement = document.getElementById("fila-display");
-
-    try {
-        // O URL da função continua o mesmo
-        const url = "/.netlify/functions/get-fila";
-        const response = await fetch(url);
         
-        // Pega a resposta da nossa função de teste
-        const data = await response.json(); 
+        try {
+            const url = "/.netlify/functions/get-fila";
+            const response = await fetch(url);
+            
+            if (!response.ok) {
+                // Esta é a linha que estava dando o erro antes
+                throw new Error("Erro de rede ao buscar a fila."); 
+            }
 
-        if (!response.ok) {
-            // Se a função de teste falhar por algum motivo
-            throw new Error(data.message || "Erro no teste.");
+            // Pega a resposta (que agora será { "total": X })
+            const data = await response.json();
+            const total = data.total;
+
+            // ATUALIZA O HTML (o código original)
+            if (total == 0) {
+                 displayElement.textContent = "Nenhum pedido na fila!";
+            } else if (total == 1) {
+                 displayElement.textContent = "1 pedido na fila";
+            } else {
+                 displayElement.textContent = `${total} pedidos na fila`;
+            }
+            
+            // Opcional: muda a cor de volta (se você deixou amarelo)
+            displayElement.style.backgroundColor = "rgb(49, 175, 60)"; 
+            displayElement.style.animation = 'none';
+
+        } catch (error) {
+            console.error("Erro ao atualizar a fila:", error);
+            displayElement.textContent = "Erro ao carregar fila";
+            displayElement.style.backgroundColor = "#c0392b"; 
         }
-
-        // --- NOSSO NOVO RELATÓRIO DE DIAGNÓSTICO ---
-        
-        // Vamos exibir os resultados do nosso teste
-        // Vamos deixar o fundo laranja para sabermos 
-        // que é um teste
-        displayElement.style.backgroundColor = "#f39c12"; 
-        displayElement.style.animation = "none"; // Para a animação
-        displayElement.style.fontSize = "1rem"; // Fonte menor
-        displayElement.style.color = "#000"; // Texto preto
-        displayElement.style.padding = "15px";
-        displayElement.style.lineHeight = "1.5";
-        
-        // Escreve o relatório no HTML
-        displayElement.innerHTML = 
-            `<strong>Relatório de Teste:</strong><br>` +
-            `Mensagem: ${data.message}<br>` +
-            `Form ID Encontrado: <strong>${data.formIdFoiEncontrado}</strong><br>` +
-            `Token Encontrado: <strong>${data.tokenFoiEncontrado}</strong>`;
-        // --- FIM DO NOVO TESTE ---
-
-    } catch (error) {
-        // Se o teste falhar completamente
-        console.error("Erro ao rodar o teste da fila:", error);
-        displayElement.textContent = `Erro no teste: ${error.message}`;
-        displayElement.style.backgroundColor = "#c0392b"; // Vermelho
     }
-}
 
     // --- Execução ---
 
