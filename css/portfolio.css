@@ -252,6 +252,11 @@ img {
     color: rgb(49, 175, 60); /* Texto escuro */
 }
 
+.sidenav-nav a i:hover {
+    /* Novo efeito hover */
+    color: rgb(49, 175, 60); /* Texto escuro */
+}
+
 /* --- Grupo 3: Rodapé da Sidenav --- */
 .sidenav-footer {
     /* A MÁGICA DA ORGANIZAÇÃO:
