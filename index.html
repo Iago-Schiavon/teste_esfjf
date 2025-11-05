@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+
+ <head>
+    <title>ESF Juiz de Fora</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+    <link rel="manifest" href="../outros/site.webmanifest">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/portfolio.css">
+    <link rel="stylesheet" href="../css/scrollbar.css">
+    <link rel="stylesheet" href="../php/portfolio.php">
+    <script src="https://kit.fontawesome.com/63ea35a7f7.js" crossorigin="anonymous"></script>
+ </head>
+
+ <body>
+    <!-- SIDENAV -->
+      <div class="sidenav">
+        <img src="img/icon (1).png" alt="" class="responsive icon-side">
+        <h3>Engenheiros Sem Fronteiras-JF</h3>
+        <a href="#home"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+        <a href="#portfolio"><i class="fa-solid fa-folder-open"></i> Portfolio</a>
+        <a href="#about"><i class="fa-solid fa-id-card"></i> About</a>
+        <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+        <div class="lang-top">
+          <table>
+            <tr>
+              <td><a href="https://iago-schiavon.netlify.app/"><img src="../img/es.svg" alt="" class="lang-side"></a></td>
+              <td><a href="ingles.html"><img src="../img/us.svg" alt="" class="lang-side"></a></td>
+            </tr>
+         </table>         
+        </div>
+        <div class="social-top">
+          <table>
+            <tr>
+              <th><a href="mailto:iago.ctrlplay@gmail.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a></th>
+              <th><a href="https://wa.me/5532998313392" target="_blank"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></th>
+              <th><a href="https://www.instagram.com/esfjuizdefora/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></th>
+              <th><a href="https://www.facebook.com/esfjf/" target="_blank"><i class="fa-brands fa-square-facebook" aria-hidden="true"></i></th>
+              <th><a href="https://br.linkedin.com/company/esf-juiz-de-fora" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></th>
+            </tr>
+         </table>
+        </div>
+      </div>
+      <!-- MAIN -->
+      <div class="main">
+        <!-- HEADER -->
+        <div class="header" id="home">
+            <div><h4 id="date"></h4></div>
+            <div><p>Projeto</p></div>
+            <!--<div><a><i class="fa fa-fw fa-user"></i> Login</a></div> -->
+       <!-- <div>
+              <form action="../php/portfolio.php" method="post">
+                Nome: <input type="text" name="name"><br>
+                E-mail: <input type="text" name="email"><br>
+                <input type="submit">
+              </form>
+            </div> -->
+        </div>
+        
+        <!-- Buttons Filters Grid-->
+        <div id="portfolio">
+            <div id="myBtnContainer">
+                <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+                <button class="btn" onclick="filterSelection('nature')"><i class="fa-solid fa-user-graduate"></i> Skills</button>
+                <button class="btn" onclick="filterSelection('cars')"> Projects</button>
+            </div> 
+        </div>
+          <!-- Portfolio Gallery Grid -->
+        <div class="row">
+            <div class="column nature">
+              <div class="content">
+                <img src="../img2/mountains.jpg" alt="Mountains" style="width:100%" class="responsive" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+                <h4>Mountains</h4>
+                <p>Lorem ipsum dolor..</p>
+              </div>
+            </div>
+            <div class="column nature">
+              <div class="content">
+                <img src="../img2/lights.jpg" alt="Lights" style="width:100%" class="responsive" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                <h4>Lights</h4>
+                <p>Lorem ipsum dolor..</p>
+              </div>
+            </div>
+            <div class="column nature">
+              <div class="content">
+                <img src="../img2/nature.jpg" alt="Nature" style="width:100%" class="responsive" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+                <h4>Forest</h4>
+                <p>Lorem ipsum dolor..</p>
+              </div>
+            </div>
+            <div class="column nature">
+                <div class="content">
+                  <img src="../img2/mountains.jpg" alt="Mountains" style="width:100%" class="responsive" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+                  <h4>Mountains</h4>
+                  <p>Lorem ipsum dolor..</p>
+                </div>
+            </div>
+            <div class="column nature">
+                <div class="content">
+                  <img src="../img2/lights.jpg" alt="Lights" style="width:100%" class="responsive" onclick="openModal();currentSlide(5)" class="hover-shadow cursor">
+                  <h4>Lights</h4>
+                  <p>Lorem ipsum dolor..</p>
+                </div>
+            </div>
+            <!---------------------------------------------------------------->
+            <div class="column cars">
+              <div class="content">
+                <img src="../img2/cars1.jpg" alt="Car" style="width:100%" class="responsive"  onclick="openModal();currentSlide(6)" class="hover-shadow cursor">
+                <h4>Retro</h4>
+                <p>Lorem ipsum dolor..</p>
+              </div>
+            </div>
+            <div class="column cars">
+              <div class="content">
+                <img src="../img2/cars2.jpg" alt="Car" style="width:100%" class="responsive"  onclick="openModal();currentSlide(7)" class="hover-shadow cursor">
+                <h4>Fast</h4>
+                <p>Lorem ipsum dolor..</p>
+              </div>
+            </div>
+            <div class="column cars">
+              <div class="content">
+                <img src="../img2/cars3.jpg" alt="Car" style="width:100%" class="responsive"  onclick="openModal();currentSlide(8)" class="hover-shadow cursor">
+                <h4>Classic</h4>
+                <p>Lorem ipsum dolor..</p>
+              </div>
+            </div>
+         <!-- END GRID -->
+        </div>
+        
+        <!-- LIGHTBOX -->
+        <div id="myModal" class="modal">
+          <span class="close cursor" onclick="closeModal()">&times;</span>
+          <div class="modal-content">
+        
+            <div class="mySlides">
+              <div class="numbertext">1 / 8</div>
+              <img src="../img2/nature.jpg">
+            </div>
+        
+            <div class="mySlides">
+              <div class="numbertext">2 / 8</div>
+              <img src="../img2/img_snow.jpg">
+            </div>
+        
+            <div class="mySlides">
+              <div class="numbertext">3 / 8</div>
+              <img src="../img2/mountains.jpg">
+            </div>
+            
+            <div class="mySlides">
+              <div class="numbertext">4 / 8</div>
+              <img src="../img2/lights.jpg">
+            </div>
+
+            <div class="mySlides">
+              <div class="numbertext">5 / 8</div>
+              <img src="../img2/mountains.jpg">
+            </div>
+
+            <div class="mySlides">
+              <div class="numbertext">6 / 8</div>
+              <img src="../img2/nature.jpg">
+            </div>
+
+            <div class="mySlides">
+              <div class="numbertext">7 / 8</div>
+              <img src="../img2/lights.jpg">
+            </div>
+
+            <div class="mySlides">
+              <div class="numbertext">8 / 8</div>
+              <img src="../img2/img_snow.jpg">
+            </div>
+            
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        
+            <div class="caption-container">
+              <p id="caption"></p>
+            </div>
+        
+            <div>
+              <div class="column1">
+                <img class="demo cursor" src="../img2/img_nature_wide.jpg" style="width:100%" onclick="currentSlide(1)" alt="Nature">
+              </div>
+              <div class="column1">
+                <img class="demo cursor" src="../img2/img_snow_wide.jpg" style="width:100%" onclick="currentSlide(2)" alt="Snow">
+              </div>
+              <div class="column1">
+                <img class="demo cursor" src="../img2/img_mountains_wide.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains">
+              </div>
+              <div class="column1">
+                <img class="demo cursor" src="../img2/img_lights_wide.jpg" style="width:100%" onclick="currentSlide(4)" alt="Lights">
+              </div>
+              <div class="column1">
+                <img class="demo cursor" src="../img2/img_mountains_wide.jpg" style="width:100%" onclick="currentSlide(5)" alt="Mountains">
+              </div>
+              <div class="column1">
+                <img class="demo cursor" src="../img2/img_nature_wide.jpg" style="width:100%" onclick="currentSlide(6)" alt="Nature">
+              </div>
+              <div class="column1">
+                <img class="demo cursor" src="../img2/img_lights_wide.jpg" style="width:100%" onclick="currentSlide(7)" alt="Lights">
+              </div>
+              <div class="column1">
+                <img class="demo cursor" src="../img2/img_snow_wide.jpg" style="width:100%" onclick="currentSlide(8)" alt="Snow">
+              </div>
+            </div>
+          </div>
+        </div>
+
+         <!-- About -->
+          <div id="about">
+            <p>hi my name is</p>
+          </div>
+
+         <!-- Contact -->
+          <div id="contact">
+            <h2>Contact me</h2>
+            <a href="https://maps.app.goo.gl/H7YcUFKWh5xxA6PaA" target="_blank"><i class="fa-solid fa-location-dot"></i> Location</a>
+            <img src="../img/ufjf.jpg" alt="">
+          </div>
+
+        <p class="footer">Copyright © 2024-2025 Iago Schiavon</p> 
+      </div>
+
+   <!----------------------------------------------------------------------------------------------------------------------------->    
+   
+    <script src="https://use.fontawesome.com/bca4cd3500.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../js/portfolio.js"></script>
+ </body>
+</html>
