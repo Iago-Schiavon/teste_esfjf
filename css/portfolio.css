@@ -250,12 +250,13 @@ img {
     /* Novo efeito hover */
     background-color: #e9ecef; /* Fundo cinza claro */
     color: rgb(49, 175, 60); /* Texto escuro */
-}
-
-.sidenav-nav a i:hover {
+    .sidenav-nav a i{
     /* Novo efeito hover */
     color: rgb(49, 175, 60); /* Texto escuro */
+    }
 }
+
+
 
 /* --- Grupo 3: Rodapé da Sidenav --- */
 .sidenav-footer {
