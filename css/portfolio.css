@@ -77,10 +77,10 @@ img {
     /* Removemos o verde. Usamos um fundo branco
        e uma borda inferior sutil para separar */
     background-color: rgb(49, 175, 60); 
-    border-bottom: 1px solid #e0e0e0; 
+    border-bottom: 1px solid #999999; 
     
     /* O texto agora será escuro */
-    color: #333; 
+    color: #ffffff; 
 }
 
 /* --- Bloco da Esquerda: Título e Saudação --- */
@@ -94,7 +94,7 @@ img {
     margin: 0; /* Remove margens */
     font-size: 1.8em;
     font-weight: 600;
-    color: #222;
+    color: #000000;
 }
 
 .header-content p#greeting {
@@ -102,7 +102,7 @@ img {
     margin: 0 0 5px 0; /* Espaço abaixo da saudação */
     font-size: 1.1em;
     font-weight: 400;
-    color: #555; /* Cor mais suave */
+    color: #ffffff; /* Cor mais suave */
 }
 
 /* --- Bloco da Direita: Data --- */
