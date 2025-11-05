@@ -150,23 +150,26 @@ document.addEventListener("DOMContentLoaded", function() {
         return;
     }
 
-
-async function atualizarFila() {
+    // Esta é a função que busca os dados
+    async function atualizarFila() {
         
         try {
+            // 1. O URL da nossa "Netlify Function"
             const url = "/.netlify/functions/get-fila";
+
+            // 2. Chama a função
             const response = await fetch(url);
             
+            // 3. Se a resposta não for OK, dispara o erro
             if (!response.ok) {
-                // Esta é a linha que estava dando o erro antes
-                throw new Error("Erro de rede ao buscar a fila."); 
+                throw new Error("Erro de rede ao buscar a fila.");
             }
 
-            // Pega a resposta (que agora será { "total": X })
+            // 4. Pega os dados (o objeto { "total": X })
             const data = await response.json();
             const total = data.total;
 
-            // ATUALIZA O HTML (o código original)
+            // 5. Atualiza o HTML com o número real
             if (total == 0) {
                  displayElement.textContent = "Nenhum pedido na fila!";
             } else if (total == 1) {
@@ -175,14 +178,15 @@ async function atualizarFila() {
                  displayElement.textContent = `${total} pedidos na fila`;
             }
             
-            // Opcional: muda a cor de volta (se você deixou amarelo)
+            // 6. Garante que o estilo esteja correto (verde)
             displayElement.style.backgroundColor = "rgb(49, 175, 60)"; 
             displayElement.style.animation = 'none';
 
         } catch (error) {
+            // Se algo der errado (na rede ou na função)
             console.error("Erro ao atualizar a fila:", error);
             displayElement.textContent = "Erro ao carregar fila";
-            displayElement.style.backgroundColor = "#c0392b"; 
+            displayElement.style.backgroundColor = "#c0392b"; // Fica vermelho
         }
     }
 
