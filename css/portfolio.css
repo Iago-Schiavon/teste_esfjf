@@ -4,7 +4,7 @@ div {
 }
 
 html, body {
-    background-color: rgb(44, 44, 44);
+    background-color: #fafafa;
     color: rgb(255, 255, 255);
     margin: 0;
     padding: 0;
@@ -13,7 +13,7 @@ html, body {
 }
 /* HEADER */
 .header {
-    background-color: rgb(32, 32, 32);
+    background-color: #00c849;
     height: 200px;
     color: white;
 }
@@ -73,7 +73,7 @@ html, body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #fafafa;
+    background-color: rgb(44, 44, 44);
     overflow-x: hidden;
     overflow-y: hidden;
     padding-top: 25px;
