@@ -13,7 +13,7 @@ html, body {
 }
 /* HEADER */
 .header {
-    background-color: #00ff5e;
+    background-color: rgb(61, 216, 74);
     height: 200px;
     color: white;
 }
@@ -73,7 +73,7 @@ html, body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgb(44, 44, 44);
+    background-color: #fafafa;
     overflow-x: hidden;
     overflow-y: hidden;
     padding-top: 25px;
@@ -125,7 +125,7 @@ html, body {
 }
 
 .sidenav h3{
-    color: #fafafa;
+    color: #000000;
     padding-top: 25px;
     padding-bottom: 10px;
     text-align: center;
@@ -133,7 +133,7 @@ html, body {
   
 .sidenav a {
     text-decoration: none;
-    color: #fafafa;
+    color: #000000;
     display: block;
     text-align: center;
     font-size: 1.3em;
