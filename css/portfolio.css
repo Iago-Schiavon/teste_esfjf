@@ -5,7 +5,6 @@ div {
 
 html, body {
     background-color: #ffffff;
-    color: rgb(255, 255, 255);
     margin: 0;
     padding: 0;
     border: 0;
@@ -367,4 +366,56 @@ html, body {
   
 img.hover-shadow {
     transition: 0.3s;
+}
+
+/* ===================================================
+   INSTRUÇÕES PARA TELAS MENORES (RESPONSIVIDADE)
+   =================================================== */
+
+/* Quando a tela tiver 768px de largura ou MENOS (tablets e celulares)
+*/
+@media screen and (max-width: 768px) {
+
+    /* 1. Ajusta a Barra Lateral (Sidenav) */
+    .sidenav {
+        width: 100%;       /* Faz o menu ocupar a largura total */
+        height: auto;      /* A altura se ajusta ao conteúdo */
+        position: relative; /* Deixa de ser 'fixed'. Passa a ser parte do fluxo normal */
+        overflow-y: auto;  /* Permite rolar o menu se for grande */
+    }
+
+    /* 2. Ajusta o Conteúdo Principal (Main) */
+    .main {
+        margin-left: 0; /* Remove a margem esquerda de 20% */
+    }
+
+    /* 3. Ajusta o grid de imagens */
+    .column {
+        /* Em vez de 4 colunas (25%), 
+           mostra 2 colunas (50%) */
+        width: 50%;
+    }
+}
+
+
+/* Quando a tela tiver 480px de largura ou MENOS (celulares)
+*/
+@media screen and (max-width: 480px) {
+
+    /* 1. Ajusta o grid de imagens */
+    .column {
+        /* Faz o grid ter apenas 1 coluna (100% da largura) */
+        width: 100%;
+    }
+
+    /* 2. Ajusta o cabeçalho */
+    .header h4 {
+        float: none; /* Remove o 'float' */
+        text-align: center; /* Centraliza o texto */
+        margin-right: 0;
+    }
+    .header p {
+        text-align: center;
+        margin-left: 0;
+    }
 }
