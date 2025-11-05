@@ -94,7 +94,7 @@ img {
     margin: 0; /* Remove margens */
     font-size: 1.8em;
     font-weight: 600;
-    color: #000000;
+    color: #161616;
 }
 
 .header-content p#greeting {
@@ -342,7 +342,7 @@ img {
        Um espaçamento generoso e fundo branco */
     padding: 60px 40px;
     background-color: #ffffff;
-    color: #333; /* Garante que o texto seja escuro */
+    color: #161616; /* Garante que o texto seja escuro */
 
     /* Um espaço elegante entre a imagem e o texto */
     gap: 40px; 
