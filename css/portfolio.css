@@ -208,7 +208,7 @@ img {
 }
 
 .sidenav h3 {
-    color: #333; /* Cor mais escura para o título */
+    color: #161616; /* Cor mais escura para o título */
     font-size: 1.15em; /* Fonte um pouco mais refinada */
     margin: 0; /* Remove margens padrão */
 }
@@ -222,7 +222,7 @@ img {
     /* Muda a aparência dos links */
     display: block; /* Ocupa a linha toda */
     text-decoration: none;
-    color: #444; /* Cor de texto principal */
+    color: #262626; /* Cor de texto principal */
     font-size: 1.1em; /* Tamanho levemente ajustado */
     font-weight: 600;
     
@@ -243,13 +243,13 @@ img {
     width: 25px; /* Largura fixa para o ícone */
     margin-right: 10px; /* Espaço entre ícone e texto */
     text-align: center; /* Centraliza o ícone nesse espaço */
-    color: #888; /* Cor sutil para o ícone */
+    color: #262626; /* Cor sutil para o ícone */
 }
   
 .sidenav-nav a:hover {
     /* Novo efeito hover */
     background-color: #e9ecef; /* Fundo cinza claro */
-    color: #000; /* Texto escuro */
+    color: rgb(49, 175, 60); /* Texto escuro */
 }
 
 /* --- Grupo 3: Rodapé da Sidenav --- */
@@ -269,8 +269,8 @@ img {
        e os centraliza.
     */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
     padding: 10px 0;
 }
 
@@ -292,12 +292,12 @@ img {
 #social-group a {
     margin: 0 10px; /* Espaçamento entre os ícones */
     font-size: 1.3em; /* Tamanho dos ícones */
-    color: #777; /* Cor sutil */
+    color: #262626; /* Cor sutil */
     transition: color 0.2s, transform 0.2s;
 }
 
 #social-group a:hover {
-    color: #000; /* Cor mais forte no hover */
+    color: rgb(49, 175, 60); /* Cor mais forte no hover */
     transform: scale(1.15); /* Efeito de zoom */
 }
   
