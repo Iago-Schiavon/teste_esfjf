@@ -13,7 +13,7 @@ html, body {
 }
 /* HEADER */
 .header {
-    background-color: #00c849;
+    background-color: #00ff5e;
     height: 200px;
     color: white;
 }
@@ -125,7 +125,7 @@ html, body {
 }
 
 .sidenav h3{
-    color: #000000;
+    color: #fafafa;
     padding-top: 25px;
     padding-bottom: 10px;
     text-align: center;
@@ -133,7 +133,7 @@ html, body {
   
 .sidenav a {
     text-decoration: none;
-    color: #000000;
+    color: #fafafa;
     display: block;
     text-align: center;
     font-size: 1.3em;
