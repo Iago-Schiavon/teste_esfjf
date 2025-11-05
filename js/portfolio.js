@@ -1,3 +1,7 @@
+// ===================================================
+// INÍCIO DO ARQUIVO portfolio.js
+// ===================================================
+
 filterSelection("all") // Execute the function and show all columns
 function filterSelection(c) {
   var x, i;
@@ -84,15 +88,14 @@ function showSlides(n) {
   captionText.innerHTML = dots[slideIndex-1].alt;
 }
 
-/* ===================================================
-   SCRIPT DO HEADER (Saudação e Data Dinâmica)
-   =================================================== */
-
+// ===================================================
+// INÍCIO DO ÚNICO 'DOMContentLoaded'
+// ===================================================
 // Adiciona um "ouvinte" que espera a página carregar
-// para então executar o código.
+// para então executar TODO o código abaixo.
 document.addEventListener("DOMContentLoaded", function() {
     
-    // --- 1. Atualizar a Saudação (Bom dia, Boa tarde, Boa noite) ---
+    // --- 1. SCRIPT DO HEADER ---
     const greetingElement = document.getElementById("greeting");
     
     // Verifica se o elemento <p id="greeting"> existe
@@ -108,41 +111,24 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // --- 2. Atualizar a Data (Formato mais completo) ---
+    // --- 2. SCRIPT DA DATA (DO HEADER) ---
     const dateElement = document.getElementById("date");
     
     // Verifica se o elemento <h4 id="date"> existe
     if (dateElement) {
         const hoje = new Date();
-        
-        // Opções para formatar a data em português
         const options = { 
             weekday: 'long', 
             year: 'numeric', 
             month: 'long', 
             day: 'numeric' 
         };
-        
-        // 'pt-BR' para português do Brasil
         let dataFormatada = hoje.toLocaleDateString('pt-BR', options);
-        
-        // Deixa a primeira letra maiúscula (ex: "quarta-feira" -> "Quarta-feira")
         dataFormatada = dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
-        
-        // Insere a data formatada no HTML
         dateElement.textContent = dataFormatada;
     }
 
-});
-
-/* ===================================================
-   SCRIPT DA FILA DE ESPERA (Polling)
-   =================================================== */
-
-// Espera o documento carregar
-document.addEventListener("DOMContentLoaded", function() {
-    
-    // Encontra o local no HTML onde vamos exibir a contagem
+    // --- 3. SCRIPT DA FILA DE ESPERA ---
     const displayElement = document.getElementById("fila-display");
 
     // Se o elemento não existir na página, não faz nada.
@@ -154,22 +140,16 @@ document.addEventListener("DOMContentLoaded", function() {
     async function atualizarFila() {
         
         try {
-            // 1. O URL da nossa "Netlify Function"
             const url = "/.netlify/functions/get-fila";
-
-            // 2. Chama a função
             const response = await fetch(url);
             
-            // 3. Se a resposta não for OK, dispara o erro
             if (!response.ok) {
                 throw new Error("Erro de rede ao buscar a fila.");
             }
 
-            // 4. Pega os dados (o objeto { "total": X })
             const data = await response.json();
             const total = data.total;
 
-            // 5. Atualiza o HTML com o número real
             if (total == 0) {
                  displayElement.textContent = "Nenhum pedido na fila!";
             } else if (total == 1) {
@@ -178,25 +158,21 @@ document.addEventListener("DOMContentLoaded", function() {
                  displayElement.textContent = `${total} pedidos na fila`;
             }
             
-            // 6. Garante que o estilo esteja correto (verde)
             displayElement.style.backgroundColor = "rgb(49, 175, 60)"; 
             displayElement.style.animation = 'none';
 
         } catch (error) {
-            // Se algo der errado (na rede ou na função)
             console.error("Erro ao atualizar a fila:", error);
             displayElement.textContent = "Erro ao carregar fila";
             displayElement.style.backgroundColor = "#c0392b"; // Fica vermelho
         }
     }
 
-    // --- Execução ---
-
-    // 1. Chama a função IMEDIATAMENTE ao carregar a página
+    // --- Execução da Fila ---
     atualizarFila();
-
-    // 2. E então, define um "timer" (Polling) para chamar
-    //    a função novamente a cada 30 segundos (30000 ms)
-    setInterval(atualizarFila, 30000);
+    setInterval(atualizarFila, 30000); // Atualiza a cada 30 segundos
 
 });
+// ===================================================
+// FIM DO ÚNICO 'DOMContentLoaded'
+// ===================================================
