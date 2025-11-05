@@ -53,11 +53,10 @@ img {
     
     /* Adiciona um preenchimento para não ficar colado
        no fundo */
-    padding: 20px; 
+    padding: 10px; 
 
-    /* Define um fundo para ele (opcional, mas bom) */
-    background-color: #f1f1f1; 
-    
+    /* Define um fundo para ele (opcional, mas bom) 
+    background-color: #f1f1f1; */
 }
 
 /* HEADER */
@@ -114,7 +113,7 @@ img {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #fafafa;
+    background-color: #c0c0c0;
     overflow-x: hidden;
     overflow-y: hidden;
     padding-top: 25px;
