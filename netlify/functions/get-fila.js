@@ -1,40 +1,53 @@
 /*
  * Arquivo: netlify/functions/get-fila.js
- * (Versão Final de Produção - v2)
+ * (Versão "À Prova de Falhas" - v4)
  *
- * Este código lê o FORM_ID e o API_TOKEN do "cofre" (Variáveis de Ambiente)
- * e busca a contagem total de envios (submission_count) na API do Netlify.
+ * Este código ignora o FORM_ID. Ele busca TODOS os formulários
+ * do site e encontra o formulário correto pelo NOME.
  */
 
 exports.handler = async (event, context) => {
   
-  // 1. Lê as chaves (que agora devem estar corretas)
-  const FORM_ID = process.env.FORM_ID;
+  // 1. Lê as chaves que precisamos.
+  // Note que agora usamos process.env.SITE_ID,
+  // que o Netlify nos dá automaticamente!
   const API_TOKEN = process.env.NETLIFY_API_TOKEN;
+  const SITE_ID = process.env.SITE_ID; // <--- A MUDANÇA!
   
-  // 2. Monta a URL da API
-  const url = `https://api.netlify.com/api/v1/forms/${FORM_ID}`;
+  // 2. O nome do formulário que queremos encontrar
+  const FORM_NAME = "pedidos-esf-v2";
+
+  // 3. Monta a NOVA URL da API
+  //    (Esta URL pede TODOS os formulários do site)
+  const url = `https://api.netlify.com/api/v1/sites/${SITE_ID}/forms`;
 
   try {
     
-    // 3. Tenta chamar a API do Netlify
+    // 4. Tenta chamar a API do Netlify
     const response = await fetch(url, {
       headers: {
         'Authorization': `Bearer ${API_TOKEN}`
       }
     });
 
-    // 4. Se a API não retornar "OK" (ex: 401, 404)
     if (!response.ok) {
-      // Cria um erro que será capturado pelo 'catch'
-      throw new Error(`Erro da API do Netlify: ${response.status} - ${response.statusText}`);
+      throw new Error(`Erro da API do Netlify (Buscando todos os forms): ${response.status} - ${response.statusText}`);
     }
 
-    // 5. Se deu certo, pega os dados
-    const data = await response.json();
-    const totalPedidos = data.submission_count;
+    // 5. Se deu certo, pega a LISTA de todos os formulários
+    const allForms = await response.json();
 
-    // 6. SUCESSO! Retorna o total para o frontend
+    // 6. Encontra o nosso formulário específico no meio da lista
+    const nossoForm = allForms.find(form => form.name === FORM_NAME);
+
+    // 7. Se não encontrar o formulário pelo NOME
+    if (!nossoForm) {
+      throw new Error(`Formulário com o nome "${FORM_NAME}" não foi encontrado na lista de formulários.`);
+    }
+
+    // 8. SUCESSO! Pegamos a contagem do formulário que encontramos
+    const totalPedidos = nossoForm.submission_count;
+
     return {
       statusCode: 200,
       headers: {
@@ -47,10 +60,9 @@ exports.handler = async (event, context) => {
 
   } catch (error) {
     
-    // 7. FALHA! Imprime o erro real no log do Netlify
-    console.error("ERRO INTERNO DA FUNÇÃO:", error.message);
+    // 9. Imprime o erro real no log
+    console.error("ERRO INTERNO DA FUNÇÃO (v4):", error.message);
 
-    // 8. Retorna um erro para o frontend
     return {
       statusCode: 500,
       body: JSON.stringify({
