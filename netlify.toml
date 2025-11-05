@@ -1,0 +1,9 @@
+# Arquivo: netlify.toml
+
+[build]
+  # Esta linha diz ao Netlify onde suas funções estão
+  functions = "netlify/functions/"
+
+[functions]
+  # Garante que estamos usando a versão mais recente
+  node_bundler = "esbuild"
