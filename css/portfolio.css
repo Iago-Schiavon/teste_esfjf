@@ -14,7 +14,7 @@ html, body {
 /* HEADER */
 .header {
     background-color: rgb(61, 216, 74);
-    height: 10%;
+    height: 20%;
     color: white;
 }
 
@@ -81,7 +81,7 @@ html, body {
 
 .icon-side{
     width: 100%;
-    height: 10%;
+    height: 20%;
     margin-left: auto;
     margin-right: auto;
     display: block;
