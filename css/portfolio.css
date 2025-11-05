@@ -106,94 +106,173 @@ img {
 }
 
 /* SIDENAV --------------------------------------------------------------------------*/
+/* ===================================================
+   SIDENAV (Design Moderno e Organizado)
+   =================================================== */
+
 .sidenav {
-    height: 100%;
-    width: 20%;
-    position: fixed;
+    height: 100%;       /* Ocupa 100% da altura */
+    width: 20%;         /* Continua com 20% da largura */
+    position: fixed;    /* Fica fixa na tela */
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #c0c0c0;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    padding-top: 25px;
+    background-color: #f8f9fa; /* Um branco "mais suave" */
+    
+    /* ORGANIZAÇÃO (Flexbox):
+       Isso transforma a sidenav num contêiner flexível
+       que organiza seus "filhos" (header, nav, footer) 
+       verticalmente (em coluna).
+    */
+    display: flex;
+    flex-direction: column;
+
+    /* BELEZA (Sombra):
+       Adiciona uma sombra sutil à direita para
+       dar profundidade e separar do conteúdo.
+    */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+
+    /* Evita que o padding "estoure" a largura */
+    box-sizing: border-box; 
+    
+    /* Remove padding-top e usa um padding geral */
+    padding: 20px;
+    
+    /* Garante que o conteúdo não vaze */
+    overflow-x: hidden; 
 }
 
-.icon-side{
-    width: 100%;
-    height: 200px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+/* --- Grupo 1: Logo e Título --- */
+.sidenav-header {
+    text-align: center; /* Centraliza o logo e o título */
+    margin-bottom: 25px; /* Espaço abaixo do título */
 }
 
-.social-side{
-    width: 75%;
-    border-radius: 4%;
+.icon-side {
+    /* Removemos a altura fixa de 200px */
+    width: 70%; /* Logo ocupa 70% da sidenav */
+    margin: 0 auto 15px auto; /* Centraliza (0 topo, auto horiz, 15 baixo) */
+}
+/* Garante que a imagem do logo seja responsiva */
+.icon-side img {
+    max-width: 100%;
+    height: auto;
 }
 
-.social-top{
-    margin-bottom: 1%;
-    margin-left: 10px;
+.sidenav h3 {
+    color: #333; /* Cor mais escura para o título */
+    font-size: 1.15em; /* Fonte um pouco mais refinada */
+    margin: 0; /* Remove margens padrão */
 }
 
-.social-side:hover {
-    box-shadow: 4px 4px 3px 1px rgb(0, 165, 187);
-    transition: 0.8s;
-}
-
-.lang-top{
-    padding-top: 15px;
-}
-
-.lang-top table{
-    width: 35%;
-}
-
-.lang-top td{
-    padding-left: 10px;
-}
-
-.lang-side{
-    width: 100%;
-    border-radius: 4%;
-}
-
-.lang-side:hover {
-    box-shadow: 4px 4px 3px 1px rgb(0, 165, 187);
-    transition: 0.8s;
-}
-
-.sidenav h3{
-    color: #000000;
-    padding-top: 15px;
-    padding-bottom: 10px;
-    text-align: center;
+/* --- Grupo 2: Navegação Principal --- */
+.sidenav-nav {
+    /* Esta 'nav' vai conter os links */
 }
   
-.sidenav a {
+.sidenav-nav a {
+    /* Muda a aparência dos links */
+    display: block; /* Ocupa a linha toda */
     text-decoration: none;
-    color: #000000;
-    display: block;
-    text-align: center;
-    font-size: 1.3em;
+    color: #444; /* Cor de texto principal */
+    font-size: 1.1em; /* Tamanho levemente ajustado */
     font-weight: 600;
+    
+    /* Alinhamento:
+       Removemos 'text-align: center'. O alinhamento
+       à esquerda com ícones fica mais profissional.
+    */
+    text-align: left;
+    
+    padding: 12px 15px; /* Espaçamento interno */
+    margin: 5px 0; /* Espaçamento entre os links */
+    border-radius: 6px; /* Bordas arredondadas! */
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* Alinhamento dos ícones (FontAwesome) */
+.sidenav-nav a i {
+    width: 25px; /* Largura fixa para o ícone */
+    margin-right: 10px; /* Espaço entre ícone e texto */
+    text-align: center; /* Centraliza o ícone nesse espaço */
+    color: #888; /* Cor sutil para o ícone */
 }
   
-.sidenav a:hover {  
-    color: rgb(0, 150, 170);;
-    text-shadow: 0 0 8px rgb(32, 229, 255);
-    transition: 0.8s;
+.sidenav-nav a:hover {
+    /* Novo efeito hover */
+    background-color: #e9ecef; /* Fundo cinza claro */
+    color: #000; /* Texto escuro */
+}
+
+/* --- Grupo 3: Rodapé da Sidenav --- */
+.sidenav-footer {
+    /* A MÁGICA DA ORGANIZAÇÃO:
+       'margin-top: auto' diz a este bloco: "empurre-se
+       para o final do contêiner flexível (o .sidenav)".
+       Isso joga os ícones sociais e idiomas para baixo.
+    */
+    margin-top: auto; 
+}
+
+/* Estilo comum aos blocos de idioma e social */
+.sidenav-group {
+    /* ORGANIZAÇÃO (Flexbox de novo!):
+       Organiza os ícones/bandeiras lado a lado
+       e os centraliza.
+    */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+/* Ícones de Idioma (Bandeiras) */
+#lang-group a img {
+    width: 30px; /* Tamanho fixo */
+    margin: 0 8px; /* Espaçamento entre as bandeiras */
+    border-radius: 4px;
+    opacity: 0.8;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+#lang-group a img:hover {
+    opacity: 1;
+    transform: scale(1.1); /* Efeito de zoom */
+}
+
+/* Ícones de Redes Sociais */
+#social-group a {
+    margin: 0 10px; /* Espaçamento entre os ícones */
+    font-size: 1.3em; /* Tamanho dos ícones */
+    color: #777; /* Cor sutil */
+    transition: color 0.2s, transform 0.2s;
+}
+
+#social-group a:hover {
+    color: #000; /* Cor mais forte no hover */
+    transform: scale(1.15); /* Efeito de zoom */
 }
   
-.main {
-    margin-left: 20%; /* Same as the width of the sidenav */
-}
+/* --- Media Query (Ajuste Final) --- */
+/*
+  Nós ainda precisamos da Media Query de LARGURA que
+  fizemos antes (para 768px e 480px).
   
-/*@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 6px; font-weight: 400;}
-    .sidenav h3 {font-size: 9px;}
+  Esta media query de ALTURA (height) que você tinha
+  ainda é útil para telas muito baixas (como celular deitado).
+*/
+@media screen and (max-height: 450px) {
+    /* Se a tela for MUITO baixa, esconde o header
+       e diminui os links */
+    .sidenav-header {
+        display: none;
+    }
+    .sidenav-nav a {
+        font-size: 0.9em;
+        padding: 8px 15px;
+        margin: 2px 0;
+    }
 }
 
 /*IMAGE GRID -----------------------------------------------------------------------------*/
