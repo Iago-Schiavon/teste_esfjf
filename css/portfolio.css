@@ -6,12 +6,11 @@ div {
 html, body {
     background-color: #ffffff;
     color: rgb(255, 255, 255);
+    margin: 0;
     padding: 0;
     border: 0;
     scroll-behavior: smooth;
     height: 100%;
-    width: 80%;
-    margin-left: 20%;
 }
 /* HEADER */
 .header {
