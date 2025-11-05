@@ -252,7 +252,7 @@ img {
     color: rgb(49, 175, 60); /* Texto escuro */
 }
 
-.sidenav-nav a :hover i{
+.sidenav-nav a:hover i{
     /* Novo efeito hover */
     color: rgb(49, 175, 60); /* Texto escuro */
 }
@@ -698,6 +698,94 @@ img.hover-shadow {
        para um visual mais moderno */
     border-radius: 8px; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+}
+
+/* ===================================================
+   ESTILOS DO FORMULÁRIO DE CONTATO
+   =================================================== */
+
+/* Este é o "embrulho" do formulário.
+  A regra #contact já está centralizando ele.
+  Vamos dar a ele um tamanho máximo e uma cor.
+*/
+.contact-form-container {
+    max-width: 800px; /* O formulário não ficará largo demais */
+    width: 100%;      /* Ocupa 100% do espaço até o max-width */
+    background-color: #ffffff; /* Fundo branco para o formulário */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+}
+
+/* Títulos dentro do formulário */
+.contact-form-container h2 {
+    text-align: center; /* Centraliza o "Entre em Contato" */
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.contact-form-container p {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Agrupa o <label> e o <input> 
+  para manter a organização
+*/
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block; /* Faz o label ficar em sua própria linha */
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* Estilo para todos os campos de entrada */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%; /* Ocupa 100% da largura */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box; /* Importante! */
+    font-size: 1em;
+    font-family: Arial, sans-serif; /* Herda a fonte */
+}
+
+/* Foco mais bonito (quando clica no campo) */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: rgb(61, 216, 74); /* Verde do ESF! */
+    box-shadow: 0 0 5px rgba(61, 216, 74, 0.5);
+}
+
+/* Botão de Envio */
+.btn-submit {
+    width: 100%;
+    background-color: rgb(61, 216, 74); /* Verde original */
+    color: #ffffff;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: rgb(49, 175, 60); /* Tom mais escuro */
+    transform: translateY(-2px);
 }
 
 /* ===================================================
