@@ -10,6 +10,13 @@ html, body {
     border: 0;
     scroll-behavior: smooth;
 }
+
+/* Define TODAS as imagens do site como responsivas */
+img {
+    max-width: 100%;
+    height:auto;
+}
+
 /* HEADER */
 .header {
     background-color: rgb(61, 216, 74);
@@ -150,7 +157,7 @@ html, body {
     margin-left: 20%; /* Same as the width of the sidenav */
 }
   
-@media screen and (max-height: 450px) {
+/*@media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 6px; font-weight: 400;}
     .sidenav h3 {font-size: 9px;}
@@ -366,6 +373,70 @@ html, body {
   
 img.hover-shadow {
     transition: 0.3s;
+}
+
+/* ===================================================
+   ESTILOS MODERNOS PARA A SEÇÃO "CONTACT" (com Flexbox)
+   =================================================== */
+
+#contact {
+    /* 1. Ativa o modo Flexbox */
+    display: flex;
+
+    /* 2. Define a direção: os itens ficarão em coluna (um embaixo do outro) */
+    flex-direction: column;
+
+    /* 3. Alinha todos os itens ao centro da página (horizontalmente) */
+    align-items: center;
+
+    /* 4. Adiciona um espaçamento interno (para "respirar") */
+    padding: 40px 20px;
+
+    /* 5. IMPORTANTE: Define uma cor de texto escura
+       (Seu 'body' estava com texto branco, então precisamos
+       forçar uma cor escura aqui para o texto ser legível) */
+    color: #333; 
+
+    /* 6. Opcional: um fundo leve para separar a seção */
+    background-color: #f9f9f9;
+}
+
+/* Estiliza o título "Contact me" */
+#contact h2 {
+    /* Aumenta o espaçamento abaixo do título */
+    margin-bottom: 20px; 
+    font-size: 2.2em; /* Tamanho da fonte maior (opcional) */
+}
+
+/* Estiliza o link de localização */
+#contact a {
+    font-size: 1.2em; /* Tamanho da fonte maior */
+    color: #007BFF;  /* Uma cor azul bonita para links */
+    text-decoration: none; /* Remove o sublinhado */
+    margin-bottom: 25px; /* Espaço antes da imagem */
+    display: inline-block; /* Garante que a margem funcione bem */
+    transition: transform 0.2s; /* Efeito suave */
+}
+
+/* Efeito simples ao passar o mouse no link */
+#contact a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+    transform: scale(1.05); /* Leve aumento */
+}
+
+/* REGRA DA IMAGEM RESPONSIVA (Atualizada)
+   Nós removemos o 'margin: auto' porque o 'align-items: center' 
+   do Flexbox (#contact) já está fazendo a centralização.
+*/
+#contact img {
+    max-width: 100%; /* Continua sendo 100% responsiva */
+    height: auto;
+    display: block;
+
+    /* Opcional: Adiciona bordas arredondadas e sombra 
+       para um visual mais moderno */
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
 }
 
 /* ===================================================
