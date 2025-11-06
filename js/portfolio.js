@@ -1,8 +1,11 @@
 // ===================================================
-// INÍCIO DO ARQUIVO portfolio.js (CORRIGIDO)
+// INÍCIO DO ARQUIVO portfolio.js (Versão Multilíngue)
 // ===================================================
 
-filterSelection("all") // Execute the function and show all columns
+// --- FUNÇÕES GLOBAIS (Filtro, Modal, etc.) ---
+// (Estas funções não precisam de tradução)
+
+filterSelection("all") 
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("column");
@@ -37,13 +40,15 @@ function w3RemoveClass(element, name) {
 }
 
 var btnContainer = document.getElementById("myBtnContainer");
-var btns = btnContainer.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function(){
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
+if (btnContainer) {
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function(){
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }
 }
 
 function openModal() {
@@ -70,6 +75,12 @@ function showSlides(n) {
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("demo");
   var captionText = document.getElementById("caption");
+  
+  // Verifica se os elementos existem antes de usá-los
+  if (slides.length === 0 || dots.length === 0 || !captionText) {
+      return; 
+  }
+
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
@@ -84,24 +95,73 @@ function showSlides(n) {
 }
 
 // ===================================================
+// INÍCIO DO SCRIPT DE TRADUÇÃO E CONTEÚDO DINÂMICO
+// ===================================================
+
+// 1. Detecta o idioma da tag <html lang="...">
+//    Se não encontrar, assume 'pt' (Português) como padrão.
+const lang = document.documentElement.lang || 'pt';
+
+// 2. Define o "dicionário" de traduções
+const textStrings = {
+    // Português (pt)
+    pt: {
+        greeting: ["Bom dia!", "Boa tarde!", "Boa noite!"],
+        dateLocale: 'pt-BR',
+        queueError: "Erro de rede ao buscar a fila.",
+        queueEmpty: "Nenhum pedido na fila!",
+        queueColPos: "Posição",
+        queueColName: "Nome (Requerente)",
+        queueColDate: "Data do Pedido",
+        queueLoadingError: "Erro ao carregar fila."
+    },
+    // Inglês (en)
+    en: {
+        greeting: ["Good morning!", "Good afternoon!", "Good evening!"],
+        dateLocale: 'en-US',
+        queueError: "Network error fetching queue.",
+        queueEmpty: "No requests in the queue!",
+        queueColPos: "Position",
+        queueColName: "Name (Requester)",
+        queueColDate: "Request Date",
+        queueLoadingError: "Error loading queue."
+    },
+    // Espanhol (es)
+    es: {
+        greeting: ["¡Buenos días!", "¡Buenas tardes!", "¡Buenas noches!"],
+        dateLocale: 'es-ES', // Espanhol da Espanha
+        queueError: "Error de red al cargar la cola.",
+        queueEmpty: "¡No hay solicitudes en la cola!",
+        queueColPos: "Posición",
+        queueColName: "Nombre (Solicitante)",
+        queueColDate: "Fecha de Solicitud",
+        queueLoadingError: "Error al cargar la cola."
+    }
+};
+
+// 3. Pega o conjunto de textos do idioma correto
+//    Se o 'lang' não for 'pt', 'en', ou 'es', ele usará 'pt'
+const T = textStrings[lang] || textStrings['pt']; 
+
+// ===================================================
 // INÍCIO DO ÚNICO 'DOMContentLoaded'
 // ===================================================
 document.addEventListener("DOMContentLoaded", function() {
     
-    // --- 1. SCRIPT DO HEADER ---
+    // --- 1. SCRIPT DO HEADER (Tradução Aplicada) ---
     const greetingElement = document.getElementById("greeting");
     if (greetingElement) {
         const horaAtual = new Date().getHours();
         if (horaAtual >= 5 && horaAtual < 12) {
-            greetingElement.textContent = "Bom dia!";
+            greetingElement.textContent = T.greeting[0]; // "Bom dia!"
         } else if (horaAtual >= 12 && horaAtual < 18) {
-            greetingElement.textContent = "Boa tarde!";
+            greetingElement.textContent = T.greeting[1]; // "Boa tarde!"
         } else {
-            greetingElement.textContent = "Boa noite!";
+            greetingElement.textContent = T.greeting[2]; // "Boa noite!"
         }
     }
 
-    // --- 2. SCRIPT DA DATA (DO HEADER) ---
+    // --- 2. SCRIPT DA DATA (DO HEADER) (Tradução Aplicada) ---
     const dateElement = document.getElementById("date");
     if (dateElement) {
         const hoje = new Date();
@@ -111,62 +171,51 @@ document.addEventListener("DOMContentLoaded", function() {
             month: 'long', 
             day: 'numeric' 
         };
-        let dataFormatada = hoje.toLocaleDateString('pt-BR', options);
+        // Usa o 'dateLocale' (pt-BR, en-US, es-ES) do nosso dicionário
+        let dataFormatada = hoje.toLocaleDateString(T.dateLocale, options);
         dataFormatada = dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
         dateElement.textContent = dataFormatada;
     }
 
-    // --- 3. SCRIPT DA FILA DE ESPERA ---
-    
-    // ==================================================
-    // BUG CORRIGIDO AQUI:
-    // O ID agora é "fila-tabela-container"
+    // --- 3. SCRIPT DA FILA DE ESPERA (Tradução Aplicada) ---
     const containerElement = document.getElementById("fila-tabela-container");
-    // ==================================================
-
-    // Se o elemento NÃO for encontrado, ele para o script da fila
-    // (mas o script do Header acima ainda funciona)
     if (!containerElement) {
-        console.error("Elemento #fila-tabela-container não foi encontrado!");
+        // Se não achar o contêiner, para aqui
         return; 
     }
 
-    // Esta é a função que busca os dados
+    // Função que busca os dados
     async function atualizarFila() {
         
-        const containerElement = document.getElementById("fila-tabela-container");
-
         try {
             const url = "/.netlify/functions/get-fila";
             const response = await fetch(url);
             
             if (!response.ok) {
-                throw new Error("Erro de rede ao buscar a fila.");
+                throw new Error(T.queueError); // Usa texto traduzido
             }
 
-            // 1. Pega os dados (ex: [ {posicao: 1, nome: 'Iago', data: '06/11/2025'} ])
             const listaDePedidos = await response.json();
 
             if (listaDePedidos.length === 0) {
                 containerElement.innerHTML = 
-                  '<p class="fila-tabela-mensagem">Nenhum pedido na fila!</p>';
+                  `<p class="fila-tabela-mensagem">${T.queueEmpty}</p>`; // Usa texto traduzido
                 return;
             }
 
-            // 2. Constrói a tabela (CABEÇALHO ATUALIZADO)
+            // Constrói a tabela (com cabeçalhos traduzidos)
             let tabelaHTML = `
                 <table class="fila-tabela">
                     <thead>
                         <tr>
-                            <th>Posição</th>
-                            <th>Nome (Requerente)</th>
-                            <th class="col-data">Data do Pedido</th> 
+                            <th>${T.queueColPos}</th>
+                            <th>${T.queueColName}</th>
+                            <th class="col-data">${T.queueColDate}</th> 
                         </tr>
                     </thead>
                     <tbody>
             `;
 
-            // 3. Adiciona uma linha (LINHA ATUALIZADA)
             listaDePedidos.forEach(pedido => {
                 tabelaHTML += `
                     <tr>
@@ -182,21 +231,20 @@ document.addEventListener("DOMContentLoaded", function() {
                 </table>
             `;
 
-            // 4. Insere a tabela
             containerElement.innerHTML = tabelaHTML;
 
         } catch (error) {
             console.error("Erro ao atualizar a fila:", error);
             containerElement.innerHTML = 
-              '<p class="fila-tabela-mensagem" style="color: #c0392b;">Erro ao carregar fila.</p>';
+              `<p class="fila-tabela-mensagem" style="color: #c0392b;">${T.queueLoadingError}</p>`; // Usa texto traduzido
         }
     }
 
     // --- Execução da Fila ---
     atualizarFila();
-    setInterval(atualizarFila, 30000); // Atualiza a cada 30 segundos
+    setInterval(atualizarFila, 30000);
 
 });
 // ===================================================
-// FIM DO ÚNICO 'DOMContentLoaded'
+// FIM DO ARQUIVO portfolio.js
 // ===================================================
