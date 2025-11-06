@@ -100,7 +100,7 @@ function showSlides(n) {
 
 // 1. Detecta o idioma da tag <html lang="...">
 //    Se não encontrar, assume 'pt' (Português) como padrão.
-const lang = document.documentElement.lang || 'pt';
+const lang = (document.documentElement.lang || 'pt').split('-')[0];
 
 // 2. Define o "dicionário" de traduções
 const textStrings = {
