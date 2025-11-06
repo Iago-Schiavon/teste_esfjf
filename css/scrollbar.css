@@ -1,17 +1,55 @@
-/* width */
+/* ===================================================
+   SCROLLBAR (Estilo Moderno e Compatível)
+   =================================================== */
+
+/* --- 1. Padrão Moderno (Firefox) --- */
+/* Isso define a barra de rolagem para o Firefox */
+html {
+    /* Define a largura da barra */
+    scrollbar-width: thin; /* Pode ser 'thin', 'auto', ou 'none' */
+    
+    /* Define a cor do "polegar" (handle) e do "trilho" (track) */
+    /* (Cor ESF / Cor de fundo suave) */
+    scrollbar-color: rgb(0, 170, 119) #f1f1f1;
+}
+
+
+/* --- 2. Padrão Antigo (Chrome, Safari, Edge) --- */
+
+/* A barra de rolagem inteira */
 ::-webkit-scrollbar {
-    width: 14px;
-    height: 100px;
+    width: 12px;  /* Largura da barra vertical */
+    height: 12px; /* Altura da barra horizontal */
+    
+    /* OBS: Eu removi seu 'height: 100px', pois isso
+       criaria uma barra horizontal muito "alta",
+       o que provavelmente não era a intenção.
+    */
 }
 
-/* Track */
-
- ::-webkit-scrollbar-track {
-    background: transparent;
+/* O "trilho" (a parte de fundo) */
+::-webkit-scrollbar-track {
+    /* Um fundo cinza bem claro, em vez de transparente,
+       para dar um contraste melhor.
+    */
+    background: #f1f1f1;
+    border-radius: 10px; /* Bordas arredondadas no trilho */
 }
 
-/* Handle */
+/* O "polegar" (a parte que você arrasta) */
+::-webkit-scrollbar-thumb {
+    /* COR ATUALIZADA */
+    background: rgb(0, 170, 119); 
+    
+    /* Borda arredondada para um visual moderno */
+    border-radius: 10px; 
+    
+    /* Borda sutil para dar profundidade */
+    border: 2px solid #f1f1f1;
+}
 
- ::-webkit-scrollbar-thumb {
-    background:rgb(49, 175, 60);
+/* Efeito ao passar o mouse sobre o polegar */
+::-webkit-scrollbar-thumb:hover {
+    /* COR ATUALIZADA (Mais escura) */
+    background: rgb(0, 145, 102); 
 }
