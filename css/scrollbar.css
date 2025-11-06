@@ -6,7 +6,7 @@
 /* Isso define a barra de rolagem para o Firefox */
 html {
     /* Define a largura da barra */
-    scrollbar-width: thin; /* Pode ser 'thin', 'auto', ou 'none' */
+    scrollbar-width: auto; /* Pode ser 'thin', 'auto', ou 'none' */
     
     /* Define a cor do "polegar" (handle) e do "trilho" (track) */
     /* (Cor ESF / Cor de fundo suave) */
@@ -18,8 +18,8 @@ html {
 
 /* A barra de rolagem inteira */
 ::-webkit-scrollbar {
-    width: 12px;  /* Largura da barra vertical */
-    height: 12px; /* Altura da barra horizontal */
+    width: 24px;  /* Largura da barra vertical */
+    height: 24px; /* Altura da barra horizontal */
     
     /* OBS: Eu removi seu 'height: 100px', pois isso
        criaria uma barra horizontal muito "alta",
