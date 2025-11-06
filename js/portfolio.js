@@ -139,6 +139,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Esta é a função que busca os dados
     async function atualizarFila() {
         
+        // Encontra o NOVO contêiner da tabela
+        const containerElement = document.getElementById("fila-tabela-container");
+
         try {
             const url = "/.netlify/functions/get-fila";
             const response = await fetch(url);
@@ -147,24 +150,54 @@ document.addEventListener("DOMContentLoaded", function() {
                 throw new Error("Erro de rede ao buscar a fila.");
             }
 
-            const data = await response.json();
-            const total = data.total;
+            // 1. Pega os dados (que agora são uma LISTA, ex: [ {posicao: 1, nome: 'Iago'} ])
+            const listaDePedidos = await response.json();
 
-            if (total == 0) {
-                 displayElement.textContent = "Nenhum pedido na fila!";
-            } else if (total == 1) {
-                 displayElement.textContent = "1 pedido na fila";
-            } else {
-                 displayElement.textContent = `${total} pedidos na fila`;
+            // 2. Se a lista estiver vazia
+            if (listaDePedidos.length === 0) {
+                containerElement.innerHTML = 
+                  '<p class="fila-tabela-mensagem">Nenhum pedido na fila!</p>';
+                return; // Para a execução
             }
+
+            // 3. Se a lista NÃO estiver vazia, vamos construir a tabela
             
-            displayElement.style.backgroundColor = "rgb(49, 175, 60)"; 
-            displayElement.style.animation = 'none';
+            // Cabeçalho da Tabela
+            let tabelaHTML = `
+                <table class="fila-tabela">
+                    <thead>
+                        <tr>
+                            <th>Posição</th>
+                            <th>Nome (Requerente)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            // 4. Adiciona uma linha (<tr>) para cada pedido
+            listaDePedidos.forEach(pedido => {
+                tabelaHTML += `
+                    <tr>
+                        <td class="posicao">#${pedido.posicao}</td>
+                        <td class="nome">${pedido.nome}</td>
+                    </tr>
+                `;
+            });
+
+            // 5. Fecha a tabela
+            tabelaHTML += `
+                    </tbody>
+                </table>
+            `;
+
+            // 6. Insere a tabela pronta no HTML
+            containerElement.innerHTML = tabelaHTML;
 
         } catch (error) {
+            // Se algo der errado
             console.error("Erro ao atualizar a fila:", error);
-            displayElement.textContent = "Erro ao carregar fila";
-            displayElement.style.backgroundColor = "#c0392b"; // Fica vermelho
+            containerElement.innerHTML = 
+              '<p class="fila-tabela-mensagem" style="color: #c0392b;">Erro ao carregar fila.</p>';
         }
     }
 
