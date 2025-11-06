@@ -735,7 +735,7 @@ img.hover-shadow {
 .location-info-container .location-link {
     display: inline-block;
     font-size: 1.1em;
-    color: rgb(0, 170, 119); /* Cor padrão ESF */
+    color: rgb(0, 145, 102); /* Cor mais escura */
     text-decoration: none;
     line-height: 1.6;
     transition: transform 0.2s;
