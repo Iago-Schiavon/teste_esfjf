@@ -411,6 +411,18 @@ img {
     color: #222;
 }
 
+/* Estilo para a nova coluna de Data */
+.fila-tabela .col-data {
+    text-align: right; /* Alinha o título "Data" à direita */
+}
+
+.fila-tabela td.data {
+    text-align: right; /* Alinha a data à direita */
+    color: #777; /* Cor cinza mais sutil */
+    font-size: 0.9em;
+    font-family: monospace; /* Fonte monoespaçada para datas */
+}
+
 /*IMAGE GRID -----------------------------------------------------------------------------*/
 .row {
     margin: 8px 8px;
