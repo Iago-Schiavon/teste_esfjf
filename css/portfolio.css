@@ -249,12 +249,12 @@ img {
 .sidenav-nav a:hover {
     /* Novo efeito hover */
     background-color: #e9ecef; /* Fundo cinza claro */
-    color: rgb(49, 175, 60); /* Texto escuro */
+    color: rgb(0, 170, 119); /* Texto escuro */
 }
 
 .sidenav-nav a:hover i{
     /* Novo efeito hover */
-    color: rgb(49, 175, 60); /* Texto escuro */
+    color: rgb(0, 170, 119); /* Texto escuro */
 }
 
 /* --- Grupo 3: Rodapé da Sidenav --- */
@@ -302,7 +302,7 @@ img {
 }
 
 #social-group a:hover {
-    color: rgb(49, 175, 60); /* Cor mais forte no hover */
+    color: rgb(0, 170, 119); /* Cor mais forte no hover */
     transform: scale(1.15); /* Efeito de zoom */
 }
   
@@ -391,7 +391,7 @@ img {
     /* Subtítulo "Engenheiros Sem Fronteiras..." */
     font-size: 1.4em;
     font-weight: 500;
-    color: rgb(61, 216, 74); /* Usando o verde original! */
+    color: rgb(0, 170, 119); /* Usando o verde original! */
     margin-bottom: 25px;
 }
 
@@ -471,7 +471,7 @@ img {
 /* Animação para o display */
 @keyframes pulso {
     0% {
-        box-shadow: 0 0 0 0 rgba(49, 175, 60, 0.7);
+        box-shadow: 0 0 0 0 rgba(0, 170, 119, 0.7);
     }
     70% {
         box-shadow: 0 0 0 15px rgba(49, 175, 60, 0);
