@@ -1,73 +1,63 @@
 /*
  * Arquivo: netlify/functions/get-fila.js
- * (Versão "À Prova de Falhas" - v4)
+ * (Versão 5 - Busca e Filtra Nomes)
  *
- * Este código ignora o FORM_ID. Ele busca TODOS os formulários
- * do site e encontra o formulário correto pelo NOME.
+ * Busca todas as submissões do site, filtra pelo nome do formulário,
+ * inverte a ordem (para a fila) e retorna uma lista segura.
  */
 
 exports.handler = async (event, context) => {
   
-  // 1. Lê as chaves que precisamos.
-  // Note que agora usamos process.env.SITE_ID,
-  // que o Netlify nos dá automaticamente!
   const API_TOKEN = process.env.NETLIFY_API_TOKEN;
-  const SITE_ID = process.env.SITE_ID; // <--- A MUDANÇA!
+  const SITE_ID = process.env.SITE_ID; // ID automático do site
+  const FORM_NAME = "pedidos-esf-v2"; // O nome do formulário
   
-  // 2. O nome do formulário que queremos encontrar
-  const FORM_NAME = "pedidos-esf";
-
-  // 3. Monta a NOVA URL da API
-  //    (Esta URL pede TODOS os formulários do site)
-  const url = `https://api.netlify.com/api/v1/sites/${SITE_ID}/forms`;
+  // URL da API que busca TODAS as submissões do site
+  const url = `https://api.netlify.com/api/v1/sites/${SITE_ID}/submissions`;
 
   try {
     
-    // 4. Tenta chamar a API do Netlify
+    // 1. Chama a API
     const response = await fetch(url, {
-      headers: {
-        'Authorization': `Bearer ${API_TOKEN}`
-      }
+      headers: { 'Authorization': `Bearer ${API_TOKEN}` }
     });
 
     if (!response.ok) {
-      throw new Error(`Erro da API do Netlify (Buscando todos os forms): ${response.status} - ${response.statusText}`);
+      throw new Error(`Erro da API do Netlify: ${response.status} - ${response.statusText}`);
     }
 
-    // 5. Se deu certo, pega a LISTA de todos os formulários
-    const allForms = await response.json();
+    // 2. Pega a lista de TODAS as submissões
+    const allSubmissions = await response.json();
 
-    // 6. Encontra o nosso formulário específico no meio da lista
-    const nossoForm = allForms.find(form => form.name === FORM_NAME);
+    // 3. Filtra a lista para pegar apenas as do formulário "pedidos-esf-v2"
+    const nossosPedidos = allSubmissions.filter(s => s.form_name === FORM_NAME);
 
-    // 7. Se não encontrar o formulário pelo NOME
-    if (!nossoForm) {
-      throw new Error(`Formulário com o nome "${FORM_NAME}" não foi encontrado na lista de formulários.`);
-    }
+    // 4. Inverte a ordem (API envia mais novo -> mais antigo)
+    //    Queremos a fila (mais antigo -> mais novo)
+    const pedidosEmOrdem = nossosPedidos.reverse();
 
-    // 8. SUCESSO! Pegamos a contagem do formulário que encontramos
-    const totalPedidos = nossoForm.submission_count;
+    // 5. O FILTRO DE SEGURANÇA:
+    //    Cria uma nova lista "limpa" SÓ com o nome e a posição.
+    const listaSegura = pedidosEmOrdem.map((item, index) => {
+      return {
+        posicao: index + 1,        // Posição na fila (1, 2, 3...)
+        nome: item.data.nome     // Pega SÓ o campo "nome"
+      };
+    });
 
+    // 6. SUCESSO! Retorna a lista segura
     return {
       statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-      body: JSON.stringify({
-        total: totalPedidos 
-      }),
+      headers: { 'Access-Control-Allow-Origin': '*' },
+      // O 'body' agora é a nossa lista de nomes
+      body: JSON.stringify(listaSegura), 
     };
 
   } catch (error) {
-    
-    // 9. Imprime o erro real no log
-    console.error("ERRO INTERNO DA FUNÇÃO (v4):", error.message);
-
+    console.error("ERRO INTERNO DA FUNÇÃO (v5):", error.message);
     return {
       statusCode: 500,
-      body: JSON.stringify({
-        message: `Erro interno do servidor: ${error.message}`
-      }),
+      body: JSON.stringify({ message: `Erro: ${error.message}` }),
     };
   }
 };
