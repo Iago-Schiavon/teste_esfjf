@@ -254,32 +254,29 @@
 
           <!-- Contact -->
           <div id="contact">
+
               <div class="contact-form-container">
                   <h2>Entre em Contato</h2>
                   <p>Tem um projeto, uma ideia ou quer fazer parte? Preencha o formulário abaixo e entraremos em contato.</p>
-
+                  
                   <form 
-                    name="pedidos-esf" 
+                    name="pedidos-esf-v2" 
                     method="POST" 
                     data-netlify="true"
                     action="/Obrigado"
                   >
-                      
                       <div class="form-group">
                           <label for="nome">Seu Nome Completo:</label>
                           <input type="text" id="nome" name="nome" required>
                       </div>
-
                       <div class="form-group">
                           <label for="email">Seu Melhor Email:</label>
                           <input type="email" id="email" name="email" required>
                       </div>
-
                       <div class="form-group">
                           <label for="telefone">Telefone / WhatsApp (Opcional):</label>
                           <input type="tel" id="telefone" name="telefone">
                       </div>
-
                       <div class="form-group">
                           <label for="assunto">Qual o motivo do contato?</label>
                           <select id="assunto" name="assunto" required>
@@ -290,17 +287,30 @@
                               <option value="outro">Outro</option>
                           </select>
                       </div>
-
                       <div class="form-group">
                           <label for="mensagem">Descreva seu pedido ou ideia:</label>
                           <textarea id="mensagem" name="mensagem" rows="6" required></textarea>
                       </div>
-
                       <div class="form-group">
                           <button type="submit" class="btn-submit">Enviar Pedido</button>
                       </div>
                   </form>
               </div>
+
+              <div class="location-info-container">
+                  <h2>Nossa Localização</h2>
+                  
+                  <a href="https://maps.app.goo.gl/474Ddb7vtiDqiCPu9" target="_blank" class="location-link">
+                      <i class="fa-solid fa-location-dot"></i> 
+                      Faculdade de Engenharia - UFJF Campus Juiz de Fora<br>
+                      Rua José Lourenço Kelmer, s/n - Bairro São Pedro<br>
+                      Sala 4143 - Observatório da Educação em Engenharia - OEE<br>
+                      Juiz de Fora, MG 36036-330, BR
+                  </a>
+                  
+                  <img src="../img/ufjf.jpg" alt="Portão da UFJF">
+              </div>
+
           </div>
 
         </div>
