@@ -732,8 +732,8 @@ img.hover-shadow {
     font-size: 2.2em;
 }
 
-.location-info-container i {
-    color: rgb(255, 0, 0);
+.location-info-container a i {
+    color: #ff0000;
 }
 
 .location-info-container .location-link {
