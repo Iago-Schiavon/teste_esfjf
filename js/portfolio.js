@@ -134,6 +134,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Esta é a função que busca os dados
     async function atualizarFila() {
         
+        const containerElement = document.getElementById("fila-tabela-container");
+
         try {
             const url = "/.netlify/functions/get-fila";
             const response = await fetch(url);
@@ -142,33 +144,35 @@ document.addEventListener("DOMContentLoaded", function() {
                 throw new Error("Erro de rede ao buscar a fila.");
             }
 
-            // Pega os dados (que agora são uma LISTA)
+            // 1. Pega os dados (ex: [ {posicao: 1, nome: 'Iago', data: '06/11/2025'} ])
             const listaDePedidos = await response.json();
 
-            // Se a lista estiver vazia
             if (listaDePedidos.length === 0) {
                 containerElement.innerHTML = 
                   '<p class="fila-tabela-mensagem">Nenhum pedido na fila!</p>';
                 return;
             }
 
-            // Constrói a tabela
+            // 2. Constrói a tabela (CABEÇALHO ATUALIZADO)
             let tabelaHTML = `
                 <table class="fila-tabela">
                     <thead>
                         <tr>
                             <th>Posição</th>
                             <th>Nome (Requerente)</th>
+                            <th class="col-data">Data do Pedido</th> 
                         </tr>
                     </thead>
                     <tbody>
             `;
 
+            // 3. Adiciona uma linha (LINHA ATUALIZADA)
             listaDePedidos.forEach(pedido => {
                 tabelaHTML += `
                     <tr>
                         <td class="posicao">#${pedido.posicao}</td>
                         <td class="nome">${pedido.nome}</td>
+                        <td class="data">${pedido.data}</td> 
                     </tr>
                 `;
             });
@@ -178,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 </table>
             `;
 
-            // Insere a tabela pronta no HTML
+            // 4. Insere a tabela
             containerElement.innerHTML = tabelaHTML;
 
         } catch (error) {
