@@ -44,11 +44,14 @@ img {
 /* FOOTER */
 .footer {
     text-align: center;
-    font-size: 1.2em; /* Um pouco menor */
+    font-size: 1.2em;
     font-weight: bold;
     color: rgb(10, 10, 10);
-    
     padding: 10px; 
+    
+    /* A CORREÇÃO: Centraliza o <p> do copyright
+       dentro do seu "pai" flex (.main) */
+    align-self: center;
 }
 
 /* ===================================================

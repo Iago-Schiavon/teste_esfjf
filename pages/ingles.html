@@ -41,8 +41,10 @@
         </div>
 
       </div>
+      <!-- MAIN -->
       <div class="main">
         <div class="main-content-wrapper">
+          <!-- HEADER -->
           <div class="header" id="home">
             <div class="header-content">
                 <p id="greeting">Loading...</p> <h2>Engineers Without Borders - Juiz de Fora Hub</h2> </div>
@@ -51,6 +53,7 @@
                 <h4 id="date"></h4> </div>
           </div>
           
+          <!-- Buttons Filters Grid-->
           <div id="portfolio">
               <div id="myBtnContainer">
                   <button class="btn active" onclick="filterSelection('all')"> Show all</button>
@@ -58,21 +61,143 @@
                   <button class="btn" onclick="filterSelection('cars')"> Projects</button>
               </div> 
           </div>
-            <div class="row">
-             </div>
+          <!-- Portfolio Gallery Grid -->
+          <div class="row">
+              <div class="column nature">
+                <div class="content">
+                  <img src="../img2/mountains.jpg" alt="Mountains" style="width:100%" class="responsive" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+                  <h4>Mountains</h4>
+                  <p>Sample text for skills...</p>
+                </div>
+              </div>
+              <div class="column nature">
+                <div class="content">
+                  <img src="../img2/lights.jpg" alt="Lights" style="width:100%" class="responsive" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                  <h4>Lights</h4>
+                  <p>Sample text for skills...</p>
+                </div>
+              </div>
+              <div class="column nature">
+                <div class="content">
+                  <img src="../img2/nature.jpg" alt="Nature" style="width:100%" class="responsive" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+                  <h4>Forest</h4>
+                  <p>Sample text for skills...</p>
+                </div>
+              </div>
+              <div class="column nature">
+                  <div class="content">
+                    <img src="../img2/mountains.jpg" alt="Mountains" style="width:100%" class="responsive" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+                    <h4>Mountains</h4>
+                    <p>Sample text for skills...</p>
+                  </div>
+              </div>
+              <div class="column nature">
+                  <div class="content">
+                    <img src="../img2/lights.jpg" alt="Lights" style="width:100%" class="responsive" onclick="openModal();currentSlide(5)" class="hover-shadow cursor">
+                    <h4>Lights</h4>
+                    <p>Sample text for skills...</p>
+                  </div>
+              </div>
+              <div class="column cars">
+                <div class="content">
+                  <img src="../img2/cars1.jpg" alt="Car" style="width:100%" class="responsive"  onclick="openModal();currentSlide(6)" class="hover-shadow cursor">
+                  <h4>Retro Project</h4>
+                  <p>Sample text for projects...</p>
+                </div>
+              </div>
+              <div class="column cars">
+                <div class="content">
+                  <img src="../img2/cars2.jpg" alt="Car" style="width:100%" class="responsive"  onclick="openModal();currentSlide(7)" class="hover-shadow cursor">
+                  <h4>Fast Project</h4>
+                  <p>Sample text for projects...</p>
+                </div>
+              </div>
+              <div class="column cars">
+                <div class="content">
+                  <img src="../img2/cars3.jpg" alt="Car" style="width:100%" class="responsive"  onclick="openModal();currentSlide(8)" class="hover-shadow cursor">
+                  <h4>Classic Project</h4>
+                  <p>Sample text for projects...</p>
+                </div>
+              </div>
+          </div>
           
           <div id="myModal" class="modal">
-            <div>
+            <span class="close cursor" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+          
+              <div class="mySlides">
+                <div class="numbertext">1 / 8</div>
+                <img src="../img2/mountains.jpg" style="width:100%">
+              </div>
+          
+              <div class="mySlides">
+                <div class="numbertext">2 / 8</div>
+                <img src="../img2/lights.jpg" style="width:100%">
+              </div>
+          
+              <div class="mySlides">
+                <div class="numbertext">3 / 8</div>
+                <img src="../img2/nature.jpg" style="width:100%">
+              </div>
+              
+              <div class="mySlides">
+                <div class="numbertext">4 / 8</div>
+                <img src="../img2/mountains.jpg" style="width:100%">
+              </div>
+
+              <div class="mySlides">
+                <div class="numbertext">5 / 8</div>
+                <img src="../img2/lights.jpg" style="width:100%">
+              </div>
+
+              <div class="mySlides">
+                <div class="numbertext">6 / 8</div>
+                <img src="../img2/cars1.jpg" style="width:100%">
+              </div>
+
+              <div class="mySlides">
+                <div class="numbertext">7 / 8</div>
+                <img src="../img2/cars2.jpg" style="width:100%">
+              </div>
+
+              <div class="mySlides">
+                <div class="numbertext">8 / 8</div>
+                <img src="../img2/cars3.jpg" style="width:100%">
+              </div>
+              
+              <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1)">&#10095;</a>
+          
+              <div class="caption-container">
+                <p id="caption"></p>
+              </div>
+          
+              <div>
                 <div class="column1">
-                  <img class="demo cursor" src="../img2/img_nature_wide.jpg" style="width:100%" onclick="currentSlide(1)" alt="Nature">
+                  <img class="demo cursor" src="../img2/mountains.jpg" style="width:100%" onclick="currentSlide(1)" alt="Mountains">
                 </div>
                 <div class="column1">
-                  <img class="demo cursor" src="../img2/img_snow_wide.jpg" style="width:100%" onclick="currentSlide(2)" alt="Snow">
+                  <img class="demo cursor" src="../img2/lights.jpg" style="width:100%" onclick="currentSlide(2)" alt="Lights">
                 </div>
                 <div class="column1">
-                  <img class="demo cursor" src="../img2/img_mountains_wide.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains">
+                  <img class="demo cursor" src="../img2/nature.jpg" style="width:100%" onclick="currentSlide(3)" alt="Nature">
                 </div>
+                <div class="column1">
+                  <img class="demo cursor" src="../img2/mountains.jpg" style="width:100%" onclick="currentSlide(4)" alt="Mountains 2">
                 </div>
+                <div class="column1">
+                  <img class="demo cursor" src="../img2/lights.jpg" style="width:100%" onclick="currentSlide(5)" alt="Lights 2">
+                </div>
+                <div class="column1">
+                  <img class="demo cursor" src="../img2/cars1.jpg" style="width:100%" onclick="currentSlide(6)" alt="Retro Car">
+                </div>
+                <div class="column1">
+                  <img class="demo cursor" src="../img2/cars2.jpg" style="width:100%" onclick="currentSlide(7)" alt="Fast Car">
+                </div>
+                <div class="column1">
+                  <img class="demo cursor" src="../img2/cars3.jpg" style="width:100%" onclick="currentSlide(8)" alt="Classic Car">
+                </div>
+              </div>
             </div>
           </div>
  

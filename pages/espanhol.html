@@ -51,21 +51,135 @@
               <div id="myBtnContainer">
                   <button class="btn active" onclick="filterSelection('all')"> Mostrar todo</button> <button class="btn" onclick="filterSelection('nature')"><i class="fa-solid fa-user-graduate"></i> Habilidades</button> <button class="btn" onclick="filterSelection('cars')"> Proyectos</button> </div> 
           </div>
-            <div class="row">
-             </div>
+          <div class="row">
+              <div class="column nature">
+                <div class="content">
+                  <img src="../img2/mountains.jpg" alt="Montañas" style="width:100%" class="responsive" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+                  <h4>Montañas</h4>
+                  <p>Texto de ejemplo...</p>
+                </div>
+              </div>
+              <div class="column nature">
+                <div class="content">
+                  <img src="../img2/lights.jpg" alt="Luces" style="width:100%" class="responsive" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                  <h4>Luces</h4>
+                  <p>Texto de ejemplo...</p>
+                </div>
+              </div>
+              <div class="column nature">
+                <div class="content">
+                  <img src="../img2/nature.jpg" alt="Naturaleza" style="width:100%" class="responsive" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+                  <h4>Bosque</h4>
+                  <p>Texto de ejemplo...</p>
+                </div>
+              </div>
+              <div class="column nature">
+                  <div class="content">
+                    <img src="../img2/mountains.jpg" alt="Montañas" style="width:100%" class="responsive" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+                    <h4>Montañas</h4>
+                    <p>Texto de ejemplo...</p>
+                  </div>
+              </div>
+              <div class="column nature">
+                  <div class="content">
+                    <img src="../img2/lights.jpg" alt="Luces" style="width:100%" class="responsive" onclick="openModal();currentSlide(5)" class="hover-shadow cursor">
+                    <h4>Luces</h4>
+                    <p>Texto de ejemplo...</p>
+                  </div>
+              </div>
+              <div class="column cars">
+                <div class="content">
+                  <img src="../img2/cars1.jpg" alt="Coche" style="width:100%" class="responsive"  onclick="openModal();currentSlide(6)" class="hover-shadow cursor">
+                  <h4>Proyecto Retro</h4>
+                  <p>Texto de ejemplo...</p>
+                </div>
+              </div>
+              <div class="column cars">
+                <div class="content">
+                  <img src="../img2/cars2.jpg" alt="Coche" style="width:100%" class="responsive"  onclick="openModal();currentSlide(7)" class="hover-shadow cursor">
+                  <h4>Proyecto Rápido</h4>
+                  <p>Texto de ejemplo...</p>
+                </div>
+              </div>
+              <div class="column cars">
+                <div class="content">
+                  <img src="../img2/cars3.jpg" alt="Coche" style="width:100%" class="responsive"  onclick="openModal();currentSlide(8)" class="hover-shadow cursor">
+                  <h4>Proyecto Clásico</h4>
+                  <p>Texto de ejemplo...</p>
+                </div>
+              </div>
+          </div>
           
           <div id="myModal" class="modal">
-            <div>
+            <span class="close cursor" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+          
+              <div class="mySlides">
+                <div class="numbertext">1 / 8</div>
+                <img src="../img2/mountains.jpg" style="width:100%">
+              </div>
+              <div class="mySlides">
+                <div class="numbertext">2 / 8</div>
+                <img src="../img2/lights.jpg" style="width:100%">
+              </div>
+              <div class="mySlides">
+                <div class="numbertext">3 / 8</div>
+                <img src="../img2/nature.jpg" style="width:100%">
+              </div>
+              <div class="mySlides">
+                <div class="numbertext">4 / 8</div>
+                <img src="../img2/mountains.jpg" style="width:100%">
+              </div>
+              <div class="mySlides">
+                <div class="numbertext">5 / 8</div>
+                <img src="../img2/lights.jpg" style="width:100%">
+              </div>
+              <div class="mySlides">
+                <div class="numbertext">6 / 8</div>
+                <img src="../img2/cars1.jpg" style="width:100%">
+              </div>
+              <div class="mySlides">
+                <div class="numbertext">7 / 8</div>
+                <img src="../img2/cars2.jpg" style="width:100%">
+              </div>
+              <div class="mySlides">
+                <div class="numbertext">8 / 8</div>
+                <img src="../img2/cars3.jpg" style="width:100%">
+              </div>
+              
+              <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1)">&#10095;</a>
+          
+              <div class="caption-container">
+                <p id="caption"></p>
+              </div>
+          
+              <div>
                 <div class="column1">
-                  <img class="demo cursor" src="../img2/img_nature_wide.jpg" style="width:100%" onclick="currentSlide(1)" alt="Naturaleza">
+                  <img class="demo cursor" src="../img2/mountains.jpg" style="width:100%" onclick="currentSlide(1)" alt="Montañas">
                 </div>
                 <div class="column1">
-                  <img class="demo cursor" src="../img2/img_snow_wide.jpg" style="width:100%" onclick="currentSlide(2)" alt="Nieve">
+                  <img class="demo cursor" src="../img2/lights.jpg" style="width:100%" onclick="currentSlide(2)" alt="Luces">
                 </div>
                 <div class="column1">
-                  <img class="demo cursor" src="../img2/img_mountains_wide.jpg" style="width:100%" onclick="currentSlide(3)" alt="Montañas">
+                  <img class="demo cursor" src="../img2/nature.jpg" style="width:100%" onclick="currentSlide(3)" alt="Naturaleza">
                 </div>
+                <div class="column1">
+                  <img class="demo cursor" src="../img2/mountains.jpg" style="width:100%" onclick="currentSlide(4)" alt="Montañas 2">
                 </div>
+                <div class="column1">
+                  <img class="demo cursor" src="../img2/lights.jpg" style="width:100%" onclick="currentSlide(5)" alt="Luces 2">
+                </div>
+                <div class="column1">
+                  <img class="demo cursor" src="../img2/cars1.jpg" style="width:100%" onclick="currentSlide(6)" alt="Coche Retro">
+                </div>
+                <div class="column1">
+                  <img class="demo cursor" src="../img2/cars2.jpg" style="width:100%" onclick="currentSlide(7)" alt="Coche Rápido">
+                </div>
+                <div class="column1">
+                  <img class="demo cursor" src="../img2/cars3.jpg" style="width:100%" onclick="currentSlide(8)" alt="Coche Clásico">
+                </div>
+              </div>
             </div>
           </div>
  
