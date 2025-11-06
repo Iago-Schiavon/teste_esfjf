@@ -76,7 +76,7 @@ img {
     
     /* Removemos o verde. Usamos um fundo branco
        e uma borda inferior sutil para separar */
-    background-color: rgb(49, 175, 60); 
+    background-color: rgb(0, 170, 119); 
     border-bottom: 1px solid #999999; 
     
     /* O texto agora será escuro */
@@ -406,7 +406,7 @@ img {
 /* --- Estilo do Botão "Faça Parte" --- */
 .btn-about {
     display: inline-block;
-    background-color: rgb(61, 216, 74); /* Verde original */
+    background-color: rgb(0, 170, 119); /* Verde original */
     color: #ffffff; /* Texto branco */
     padding: 12px 25px;
     font-size: 1.1em;
@@ -457,7 +457,7 @@ img {
 /* Este é o "display" principal onde o número aparece */
 #fila-display {
     display: inline-block;
-    background-color: rgb(49, 175, 60); /* Verde do ESF */
+    background-color: rgb(0, 170, 119); /* Verde do ESF */
     color: #ffffff;
     padding: 20px 35px;
     border-radius: 8px;
@@ -508,7 +508,7 @@ img {
   
 /* Content */
 .content {
-    background-color: rgb(65, 110, 146);
+    background-color: rgb(0, 170, 119);
     padding: 6px;
     color: rgb(10, 10, 10);
     font-weight: 500;    
@@ -822,14 +822,14 @@ img.hover-shadow {
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: rgb(61, 216, 74); /* Verde do ESF! */
-    box-shadow: 0 0 5px rgba(61, 216, 74, 0.5);
+    border-color: rgb(0, 170, 119); /* Verde do ESF! */
+    box-shadow: 0 0 5px rgba(0, 170, 119, 0.5);
 }
 
 /* Botão de Envio */
 .btn-submit {
     width: 100%;
-    background-color: rgb(61, 216, 74); /* Verde original */
+    background-color: rgb(0, 170, 119); /* Verde original */
     color: #ffffff;
     padding: 15px;
     font-size: 1.2em;
