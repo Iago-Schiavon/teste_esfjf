@@ -181,14 +181,14 @@ document.addEventListener("DOMContentLoaded", function() {
     // --- 3. SCRIPT DO COPYRIGHT AUTOMÁTICO ---
     const copyrightElement = document.getElementById("copyright-year");
     if (copyrightElement) {
-        const anoInicial = 2024; // O ano que o site começou
+        const anoInicial = 2025; // O ano que o site começou
         const anoAtual = new Date().getFullYear(); // Pega o ano atual (ex: 2025)
         
         if (anoAtual > anoInicial) {
-            // Se for 2025 ou mais, mostra o intervalo (ex: "2024–2025")
+            // Se for 2026 ou mais, mostra o intervalo (ex: "2025–2026")
             copyrightElement.textContent = anoInicial + "–" + anoAtual;
         } else {
-            // Se ainda for 2024, mostra só "2024"
+            // Se ainda for 2025, mostra só "2025"
             copyrightElement.textContent = anoInicial;
         }
     }
