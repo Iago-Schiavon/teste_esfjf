@@ -43,20 +43,12 @@ img {
 
 /* FOOTER */
 .footer {
-    /* Removemos o margin-top horrível */
-    /* margin-top: 3000px; <-- REMOVIDO */
-
     text-align: center;
     font-size: 1.2em; /* Um pouco menor */
     font-weight: bold;
     color: rgb(10, 10, 10);
     
-    /* Adiciona um preenchimento para não ficar colado
-       no fundo */
     padding: 10px; 
-
-    /* Define um fundo para ele (opcional, mas bom) 
-    background-color: #f1f1f1; */
 }
 
 /* ===================================================
@@ -66,40 +58,33 @@ img {
 .header {
     /* 1. LAYOUT (FLEXBOX) */
     display: flex;
-    justify-content: space-between; /* Mágica: joga os filhos para os cantos */
-    align-items: center;           /* Alinha verticalmente no centro */
-
-    /* 2. DESIGN (Clean) */
-    /* Removemos a altura fixa! O padding agora define o tamanho */
-    /* height: 200px; <-- REMOVIDO */
-    padding: 30px 40px; /* 30px em cima/baixo, 40px nas laterais */
+    justify-content: space-between; 
+    align-items: center;
+    padding: 30px 40px;
     
-    /* Removemos o verde. Usamos um fundo branco
-       e uma borda inferior sutil para separar */
+    /* COR ATUALIZADA */
     background-color: rgb(0, 170, 119); 
-    border-bottom: 1px solid #999999; 
     
-    /* O texto agora será escuro */
+    border-bottom: 1px solid #999999; 
     color: #ffffff; 
 }
 
 /* --- Bloco da Esquerda: Título e Saudação --- */
 .header-content {
-    /* Não precisa de nada especial, 
-       o flexbox pai já o alinha. */
+    /* Não precisa de nada especial */
 }
 
 .header-content h2 {
-    /* Título principal (Portfólio de Projetos) */
-    margin: 0; /* Remove margens */
+    margin: 0;
     font-size: 1.8em;
     font-weight: 600;
-    color: #161616;
+    
+    /* COR ATUALIZADA (para contraste) */
+    color: #ffffff; 
 }
 
 .header-content p#greeting {
-    /* Saudação (Bom dia...) */
-    margin: 0 0 5px 0; /* Espaço abaixo da saudação */
+    margin: 0 0 5px 0;
     font-size: 1.1em;
     font-weight: 400;
     color: #ffffff; /* Cor mais suave */
@@ -107,13 +92,10 @@ img {
 
 /* --- Bloco da Direita: Data --- */
 .header-date {
-    /* Alinha o texto da data à direita */
     text-align: right;
 }
 
 .header-date h4 {
-    /* Removemos o 'float' e o 'padding' antigo */
-    /* float: right; <-- REMOVIDO */
     margin: 0;
     font-size: 1.1em;
     font-weight: 500;
@@ -121,23 +103,17 @@ img {
 }
 
 /* --- RESPONSIVIDADE DO HEADER --- */
-/*
-  Em telas pequenas (600px ou menos),
-  o layout "space-between" fica ruim.
-  Vamos empilhar (column) o conteúdo.
-*/
 @media screen and (max-width: 600px) {
     .header {
-        flex-direction: column;    /* Empilha os blocos */
-        align-items: flex-start; /* Alinha tudo à esquerda */
+        flex-direction: column;
+        align-items: flex-start;
         padding: 20px;
     }
 
     .header-date {
-        /* Coloca a data abaixo, com espaço */
         margin-top: 15px;
         width: 100%;
-        text-align: left; /* Alinha a data à esquerda também */
+        text-align: left;
     }
     
     .header-date h4 {
@@ -158,59 +134,40 @@ img {
    =================================================== */
 
 .sidenav {
-    height: 100%;       /* Ocupa 100% da altura */
-    width: 20%;         /* Continua com 20% da largura */
-    position: fixed;    /* Fica fixa na tela */
+    height: 100%;
+    width: 20%;
+    position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #f8f9fa; /* Um branco "mais suave" */
-    
-    /* ORGANIZAÇÃO (Flexbox):
-       Isso transforma a sidenav num contêiner flexível
-       que organiza seus "filhos" (header, nav, footer) 
-       verticalmente (em coluna).
-    */
+    background-color: #f8f9fa;
     display: flex;
     flex-direction: column;
-
-    /* BELEZA (Sombra):
-       Adiciona uma sombra sutil à direita para
-       dar profundidade e separar do conteúdo.
-    */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
-
-    /* Evita que o padding "estoure" a largura */
     box-sizing: border-box; 
-    
-    /* Remove padding-top e usa um padding geral */
     padding: 20px;
-    
-    /* Garante que o conteúdo não vaze */
     overflow-x: hidden; 
 }
 
 /* --- Grupo 1: Logo e Título --- */
 .sidenav-header {
-    text-align: center; /* Centraliza o logo e o título */
-    margin-bottom: 25px; /* Espaço abaixo do título */
+    text-align: center;
+    margin-bottom: 25px;
 }
 
 .icon-side {
-    /* Removemos a altura fixa de 200px */
-    width: 70%; /* Logo ocupa 70% da sidenav */
-    margin: 0 auto 15px auto; /* Centraliza (0 topo, auto horiz, 15 baixo) */
+    width: 70%;
+    margin: 0 auto 15px auto;
 }
-/* Garante que a imagem do logo seja responsiva */
 .icon-side img {
     max-width: 100%;
     height: auto;
 }
 
 .sidenav h3 {
-    color: #161616; /* Cor mais escura para o título */
-    font-size: 1.15em; /* Fonte um pouco mais refinada */
-    margin: 0; /* Remove margens padrão */
+    color: #161616;
+    font-size: 1.15em;
+    margin: 0;
 }
 
 /* --- Grupo 2: Navegação Principal --- */
@@ -219,104 +176,75 @@ img {
 }
   
 .sidenav-nav a {
-    /* Muda a aparência dos links */
-    display: block; /* Ocupa a linha toda */
+    display: block;
     text-decoration: none;
-    color: #262626; /* Cor de texto principal */
-    font-size: 1.1em; /* Tamanho levemente ajustado */
+    color: #262626;
+    font-size: 1.1em;
     font-weight: 600;
-    
-    /* Alinhamento:
-       Removemos 'text-align: center'. O alinhamento
-       à esquerda com ícones fica mais profissional.
-    */
     text-align: left;
-    
-    padding: 12px 15px; /* Espaçamento interno */
-    margin: 5px 0; /* Espaçamento entre os links */
-    border-radius: 6px; /* Bordas arredondadas! */
+    padding: 12px 15px;
+    margin: 5px 0;
+    border-radius: 6px;
     transition: background-color 0.2s, color 0.2s;
 }
 
-/* Alinhamento dos ícones (FontAwesome) */
 .sidenav-nav a i {
-    width: 25px; /* Largura fixa para o ícone */
-    margin-right: 10px; /* Espaço entre ícone e texto */
-    text-align: center; /* Centraliza o ícone nesse espaço */
-    color: #262626; /* Cor sutil para o ícone */
+    width: 25px;
+    margin-right: 10px;
+    text-align: center;
+    color: #262626;
+    transition: color 0.2s; /* Adicionado para suavizar */
 }
   
 .sidenav-nav a:hover {
-    /* Novo efeito hover */
-    background-color: #e9ecef; /* Fundo cinza claro */
-    color: rgb(0, 170, 119); /* Texto escuro */
+    background-color: #e9ecef;
+    
+    /* COR ATUALIZADA */
+    color: rgb(0, 170, 119); 
 }
 
 .sidenav-nav a:hover i{
-    /* Novo efeito hover */
-    color: rgb(0, 170, 119); /* Texto escuro */
+    /* COR ATUALIZADA */
+    color: rgb(0, 170, 119);
 }
 
 /* --- Grupo 3: Rodapé da Sidenav --- */
 .sidenav-footer {
-    /* A MÁGICA DA ORGANIZAÇÃO:
-       'margin-top: auto' diz a este bloco: "empurre-se
-       para o final do contêiner flexível (o .sidenav)".
-       Isso joga os ícones sociais e idiomas para baixo.
-    */
     margin-top: auto; 
 }
 
-/* Estilo comum aos blocos de idioma e social */
 .sidenav-group {
-    /* ORGANIZAÇÃO (Flexbox de novo!):
-       Organiza os ícones/bandeiras lado a lado
-       e os centraliza.
-    */
     display: flex;
     justify-content: left;
     align-items: left;
     padding: 10px 0;
 }
 
-/* Ícones de Idioma (Bandeiras) */
 #lang-group a img {
-    width: 30px; /* Tamanho fixo */
-    margin: 0 8px; /* Espaçamento entre as bandeiras */
+    width: 30px;
+    margin: 0 8px;
     border-radius: 4px;
     opacity: 0.8;
     transition: opacity 0.2s, transform 0.2s;
 }
-
 #lang-group a img:hover {
     opacity: 1;
-    transform: scale(1.1); /* Efeito de zoom */
+    transform: scale(1.1);
 }
 
-/* Ícones de Redes Sociais */
 #social-group a {
-    margin: 0 10px; /* Espaçamento entre os ícones */
-    font-size: 1.3em; /* Tamanho dos ícones */
-    color: #262626; /* Cor sutil */
+    margin: 0 10px;
+    font-size: 1.3em;
+    color: #262626;
     transition: color 0.2s, transform 0.2s;
 }
-
 #social-group a:hover {
-    color: rgb(0, 170, 119); /* Cor mais forte no hover */
-    transform: scale(1.15); /* Efeito de zoom */
+    /* COR ATUALIZADA */
+    color: rgb(0, 170, 119); 
+    transform: scale(1.15);
 }
   
-/* --- Media Query (Ajuste Final) --- */
-/*
-  Nós ainda precisamos da Media Query de LARGURA que
-  fizemos antes (para 768px e 480px).
-  
-  Esta media query de ALTURA (height) que você tinha
-  ainda é útil para telas muito baixas (como celular deitado).
-*/
 @media screen and (max-height: 450px) {
-    /* Se a tela for MUITO baixa, esconde o header
-       e diminui os links */
     .sidenav-header {
         display: none;
     }
@@ -332,94 +260,71 @@ img {
    =================================================== */
 
 #about {
-    /* 1. LAYOUT (FLEXBOX)
-       Isso ativa o Flexbox e prepara o layout de 2 colunas */
     display: flex;
-    align-items: center; /* Alinha a imagem e o texto verticalmente */
-
-    /* 2. RESPONSIVIDADE FLUIDA (A Mágica!)
-       'flex-wrap: wrap' permite que as colunas "quebrem"
-       e empilhem quando não houver mais espaço.
-    */
+    align-items: center;
     flex-wrap: wrap;
-
-    /* 3. DESIGN (Clean)
-       Um espaçamento generoso e fundo branco */
     padding: 60px 40px;
     background-color: #ffffff;
-    color: #161616; /* Garante que o texto seja escuro */
-
-    /* Um espaço elegante entre a imagem e o texto */
+    color: #161616;
     gap: 40px; 
 }
 
-/* --- Coluna da Esquerda (Imagem) --- */
 .about-image {
-    /* Define que a imagem tentará ter 350px,
-       mas pode crescer (1) ou encolher (1) */
     flex: 1 1 350px; 
 }
-
 .about-image img {
-    /* Garante que a imagem seja responsiva */
     width: 100%;
     height: auto;
-    
-    /* Estética */
-    border-radius: 25px; /* Bordas arredondadas */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra suave */
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* --- Coluna da Direita (Texto) --- */
 .about-text {
-    /* Define que o texto tentará ter 400px
-       e crescerá (2) duas vezes mais rápido que a imagem.
-       Isso dá mais espaço ao texto. */
     flex: 2 1 400px;
 }
-
 .about-text h2 {
-    /* Título "Sobre Nós" */
     font-size: 2.4em;
     font-weight: 700;
     margin-top: 0;
     margin-bottom: 10px;
     color: #222;
 }
-
 .about-text h3 {
-    /* Subtítulo "Engenheiros Sem Fronteiras..." */
     font-size: 1.4em;
     font-weight: 500;
-    color: rgb(0, 170, 119); /* Usando o verde original! */
+    
+    /* COR ATUALIZADA */
+    color: rgb(0, 170, 119); 
+    
     margin-bottom: 25px;
 }
-
 .about-text p {
-    /* Parágrafos de texto */
     font-size: 1.1em;
-    line-height: 1.6; /* Espaçamento entre linhas (melhora leitura) */
+    line-height: 1.6;
     color: #444;
     margin-bottom: 20px;
 }
 
-/* --- Estilo do Botão "Faça Parte" --- */
 .btn-about {
     display: inline-block;
-    background-color: rgb(0, 170, 119); /* Verde original */
-    color: #ffffff; /* Texto branco */
+    
+    /* COR ATUALIZADA */
+    background-color: rgb(0, 170, 119); 
+    
+    color: #ffffff;
     padding: 12px 25px;
     font-size: 1.1em;
     font-weight: 600;
     text-decoration: none;
     border-radius: 6px;
     transition: background-color 0.3s, transform 0.2s;
-    text-transform: uppercase; /* Opcional: deixa em maiúsculo */
+    text-transform: uppercase;
 }
-
 .btn-about:hover {
-    background-color: rgb(49, 175, 60); /* Tom mais escuro do verde */
-    transform: translateY(-2px); /* Efeito de "levantar" */
+    /* COR ATUALIZADA (Mais escura) */
+    background-color: rgb(0, 145, 102); 
+    
+    transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     text-decoration: none;
 }
@@ -430,14 +335,14 @@ img {
 
 #fila-container {
     padding: 40px 20px;
-    background-color: #f4f4f4; /* Um fundo levemente cinza */
+    background-color: #f4f4f4;
     text-align: center;
     color: #333;
 }
 
 .fila-conteudo {
     max-width: 800px;
-    margin: 0 auto; /* Centraliza o conteúdo */
+    margin: 0 auto;
 }
 
 .fila-conteudo h3 {
@@ -454,17 +359,14 @@ img {
     color: #555;
 }
 
-/* =ENTILOS DA NOVA TABELA DA FILA ================= */
-
 #fila-tabela-container {
     width: 100%;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    overflow: hidden; /* Garante que a tabela respeite as bordas */
+    overflow: hidden;
 }
 
-/* Estilo para a mensagem "Carregando..." ou "Nenhum pedido" */
 .fila-tabela-mensagem {
     padding: 30px;
     font-size: 1.2em;
@@ -472,10 +374,9 @@ img {
     color: #555;
 }
 
-/* Estilos da tabela */
 .fila-tabela {
     width: 100%;
-    border-collapse: collapse; /* Tira espaço entre células */
+    border-collapse: collapse;
 }
 
 .fila-tabela th,
@@ -485,7 +386,6 @@ img {
     border-bottom: 1px solid #eee;
 }
 
-/* Cabeçalho da tabela */
 .fila-tabela th {
     background-color: #f8f9fa;
     font-size: 0.9em;
@@ -493,14 +393,15 @@ img {
     text-transform: uppercase;
 }
 
-/* Célula da Posição (ex: #1) */
 .fila-tabela td.posicao {
     font-weight: 700;
-    color: rgb(0, 170, 119); /* Verde do ESF */
-    width: 80px; /* Largura fixa */
+    
+    /* COR ATUALIZADA */
+    color: rgb(0, 170, 119); 
+    
+    width: 80px;
 }
 
-/* Célula do Nome */
 .fila-tabela td.nome {
     font-weight: 500;
     color: #222;
@@ -511,31 +412,29 @@ img {
     margin: 8px 8px;
 }
   
-/* Add padding BETWEEN each column (if you want) */
 .row,
 .row > .column {
     padding: 6px;
 }   
   
-/* Create three equal columns that floats next to each other */
 .column {
     float: left;
     width: 25%;
     display: none; /* Hide columns by default */
 }
   
-/* Clear floats after rows */
 .row:after {
     content: "";
     display: table;
     clear: both;
 }
   
-/* Content */
 .content {
+    /* COR ATUALIZADA */
     background-color: rgb(0, 170, 119);
+    
     padding: 6px;
-    color: rgb(10, 10, 10);
+    color: #ffffff; /* Ajustado para branco (contraste) */
     font-weight: 500;    
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
@@ -552,12 +451,10 @@ img {
   margin-right: auto;
 }
   
-/* The "show" class is added to the filtered elements */
 .show {
     display: block;
 }
   
-/* Style the buttons */
 .btn {
     border: none;
     outline: none;
@@ -570,12 +467,10 @@ img {
     font-size: 1.0em;
 }
   
-/* Add a grey background color on mouse-over */
 .btn:hover {
     background-color: #ddd;
 }
   
-/* Add a dark background color to the active button */
 .btn.active {
     background-color: #666;
      color: white;
@@ -616,7 +511,6 @@ img {
     display: none;
 }
   
-/* Modal Content */
 .modal-content {
     position: relative;
     background-color: rgb(44, 44, 44);
@@ -626,7 +520,6 @@ img {
     max-width: 1200px;
 }
   
-/* The Close Button */
 .close {
     color: white;
     position: absolute;
@@ -657,7 +550,6 @@ img {
     cursor: pointer;
 }
   
-/* Next & previous buttons */
 .prev,
 .next {
     cursor: pointer;
@@ -675,19 +567,16 @@ img {
     -webkit-user-select: none;
 }
   
-/* Position the "next button" to the right */
 .next {
     right: 0;
     border-radius: 3px 0 0 3px;
 }
   
-/* On hover, add a black background color with a little bit see-through */
 .prev:hover,
 .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
   
-/* Number text (1/3 etc) */
 .numbertext {
     color: white;
     font-size: 1.6em;
@@ -722,90 +611,37 @@ img.hover-shadow {
    ESTILOS MODERNOS PARA A SEÇÃO "CONTACT" (com Flexbox)
    =================================================== */
 
+/* (ESTE BLOCO SUBSTITUI SEUS ANTIGOS ESTILOS #contact) */
+
 #contact {
-    /* 1. Ativa o modo Flexbox */
     display: flex;
-
-    /* 2. Define a direção: os itens ficarão em coluna (um embaixo do outro) */
     flex-direction: column;
-
-    /* 3. Alinha todos os itens ao centro da página (horizontalmente) */
     align-items: center;
-
-    /* 4. Adiciona um espaçamento interno (para "respirar") */
     padding: 40px 20px;
-
-    /* 5. IMPORTANTE: Define uma cor de texto escura
-       (Seu 'body' estava com texto branco, então precisamos
-       forçar uma cor escura aqui para o texto ser legível) */
     color: #333; 
-
-    /* 6. Opcional: um fundo leve para separar a seção */
     background-color: #f9f9f9;
+    
+    /* (NOVO) Adiciona espaço entre o formulário e o bloco de localização */
+    gap: 50px;
 }
 
-/* Estiliza o título "Contact me" */
-#contact h2 {
-    /* Aumenta o espaçamento abaixo do título */
-    margin-bottom: 20px; 
-    font-size: 2.2em; /* Tamanho da fonte maior (opcional) */
-}
-
-/* Estiliza o link de localização */
-#contact a {
-    font-size: 1.2em; /* Tamanho da fonte maior */
-    color: #007BFF;  /* Uma cor azul bonita para links */
-    text-decoration: none; /* Remove o sublinhado */
-    margin-bottom: 25px; /* Espaço antes da imagem */
-    display: inline-block; /* Garante que a margem funcione bem */
-    transition: transform 0.2s; /* Efeito suave */
-}
-
-/* Efeito simples ao passar o mouse no link */
-#contact a:hover {
-    text-decoration: none;
-    transform: scale(1.05); /* Leve aumento */
-}
-
-/* REGRA DA IMAGEM RESPONSIVA (Atualizada)
-   Nós removemos o 'margin: auto' porque o 'align-items: center' 
-   do Flexbox (#contact) já está fazendo a centralização.
-*/
-#contact img {
-    max-width: 100%; /* Continua sendo 100% responsiva */
-    height: auto;
-    display: block;
-
-    /* Opcional: Adiciona bordas arredondadas e sombra 
-       para um visual mais moderno */
-    border-radius: 8px; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-}
-
-/* ===================================================
-   ESTILOS DO FORMULÁRIO DE CONTATO
-   =================================================== */
-
-/* Este é o "embrulho" do formulário.
-  A regra #contact já está centralizando ele.
-  Vamos dar a ele um tamanho máximo e uma cor.
-*/
+/* --- Bloco do Formulário --- */
 .contact-form-container {
-    max-width: 800px; /* O formulário não ficará largo demais */
-    width: 100%;      /* Ocupa 100% do espaço até o max-width */
-    background-color: #ffffff; /* Fundo branco para o formulário */
+    max-width: 800px;
+    width: 100%;
+    background-color: #ffffff;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+    box-sizing: border-box;
 }
 
-/* Títulos dentro do formulário */
 .contact-form-container h2 {
-    text-align: center; /* Centraliza o "Entre em Contato" */
+    text-align: center;
     margin-top: 0;
     margin-bottom: 10px;
     color: #222;
+    font-size: 2.2em;
 }
 
 .contact-form-container p {
@@ -815,46 +651,45 @@ img.hover-shadow {
     color: #555;
 }
 
-/* Agrupa o <label> e o <input> 
-  para manter a organização
-*/
 .form-group {
     margin-bottom: 20px;
 }
 
 .form-group label {
-    display: block; /* Faz o label ficar em sua própria linha */
+    display: block;
     margin-bottom: 8px;
     font-weight: 600;
     color: #444;
 }
 
-/* Estilo para todos os campos de entrada */
 .form-group input,
 .form-group select,
 .form-group textarea {
-    width: 100%; /* Ocupa 100% da largura */
+    width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    box-sizing: border-box; /* Importante! */
+    box-sizing: border-box;
     font-size: 1em;
-    font-family: Arial, sans-serif; /* Herda a fonte */
+    font-family: Arial, sans-serif;
 }
 
-/* Foco mais bonito (quando clica no campo) */
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: rgb(0, 170, 119); /* Verde do ESF! */
+    
+    /* COR ATUALIZADA */
+    border-color: rgb(0, 170, 119); 
     box-shadow: 0 0 5px rgba(0, 170, 119, 0.5);
 }
 
-/* Botão de Envio */
 .btn-submit {
     width: 100%;
-    background-color: rgb(0, 170, 119); /* Verde original */
+    
+    /* COR ATUALIZADA */
+    background-color: rgb(0, 170, 119); 
+    
     color: #ffffff;
     padding: 15px;
     font-size: 1.2em;
@@ -866,59 +701,101 @@ img.hover-shadow {
 }
 
 .btn-submit:hover {
-    background-color: rgb(49, 175, 60); /* Tom mais escuro */
+    /* COR ATUALIZADA (Mais escura) */
+    background-color: rgb(0, 145, 102); 
+    
     transform: translateY(-2px);
 }
+
+/* --- (NOVO) Bloco de Localização --- */
+.location-info-container {
+    max-width: 800px;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    text-align: center;
+    flex-shrink: 0; /* Garante que o flex pai não o encolha */
+}
+
+.location-info-container h2 {
+    text-align: center; 
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #222;
+    font-size: 2.2em;
+}
+
+.location-info-container .location-link {
+    display: inline-block;
+    font-size: 1.1em;
+    color: #007BFF; /* Link azul padrão */
+    text-decoration: none;
+    line-height: 1.6;
+    transition: transform 0.2s;
+    margin-bottom: 30px;
+}
+
+.location-info-container .location-link i {
+    margin-right: 8px;
+    color: #555;
+}
+
+.location-info-container .location-link:hover {
+    text-decoration: underline;
+    transform: scale(1.02);
+}
+
+.location-info-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+}
+
 
 /* ===================================================
    INSTRUÇÕES PARA TELAS MENORES (RESPONSIVIDADE)
    =================================================== */
-
-/* Quando a tela tiver 768px de largura ou MENOS (tablets e celulares)
-*/
 @media screen and (max-width: 768px) {
 
-    /* 1. Ajusta a Barra Lateral (Sidenav) */
     .sidenav {
-        width: 100%;       /* Faz o menu ocupar a largura total */
-        height: auto;      /* A altura se ajusta ao conteúdo */
-        position: relative; /* Deixa de ser 'fixed'. Passa a ser parte do fluxo normal */
-        overflow-y: auto;  /* Permite rolar o menu se for grande */
+        width: 100%;
+        height: auto;
+        position: relative;
+        overflow-y: auto;
     }
 
-    /* 2. Ajusta o Conteúdo Principal (Main) */
     .main {
-        margin-left: 0; /* Remove a margem esquerda de 20% */
-        
-        /* As regras de flexbox permanecem ativas! */
+        margin-left: 0;
         display: flex;
         flex-direction: column;
         min-height: 100vh;
     }
 
-    /* 3. Ajusta o grid de imagens */
     .column {
-        /* Em vez de 4 colunas (25%), 
-           mostra 2 colunas (50%) */
         width: 50%;
     }
 }
 
-
-/* Quando a tela tiver 480px de largura ou MENOS (celulares)
-*/
 @media screen and (max-width: 480px) {
 
-    /* 1. Ajusta o grid de imagens */
     .column {
-        /* Faz o grid ter apenas 1 coluna (100% da largura) */
         width: 100%;
     }
-
-    /* 2. Ajusta o cabeçalho */
+    
+    /* Esta regra é do seu código antigo. 
+       Ela é substituída pela regra 'max-width: 600px'
+       que está perto do topo do arquivo, mas não há problema
+       em deixá-la aqui por enquanto. */
     .header h4 {
-        float: none; /* Remove o 'float' */
-        text-align: center; /* Centraliza o texto */
+        float: none;
+        text-align: center;
         margin-right: 0;
     }
     .header p {
