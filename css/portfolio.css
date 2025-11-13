@@ -935,3 +935,19 @@ img.hover-shadow {
     color: #455a64; 
     border: 1px solid #cfd8dc; 
 }
+
+/* Ajuste para o Google Forms Embutido */
+.google-form-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.google-form-wrapper iframe {
+    width: 100%;
+    max-width: 100%; /* Garante que não passe da largura */
+    border: none;
+}

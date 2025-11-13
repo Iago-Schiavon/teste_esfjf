@@ -216,18 +216,8 @@
               </div>
             </div>
           </div>
- 
-          <div id="fila-container">
-              <div class="fila-conteudo">
-                  <h3>Status da Fila de Projetos</h3>
-                  <p>Acompanhe em (quase) tempo real o andamento dos pedidos.</p>
-                  
-                  <div id="fila-tabela-container">
-                      Carregando fila...
-                  </div>
-              </div>
-          </div>
 
+          <!-- Projects and Queue Section -->
           <div id="projetos-container">
               <div class="fila-conteudo">
                   <h3>Projetos e Fila</h3>
@@ -275,47 +265,14 @@
           <div id="contact">
 
               <div class="contact-form-container">
-                  <h2>Entre em Contato</h2>
-                  <p>Tem um projeto, uma ideia ou quer fazer parte? Preencha o formulário abaixo e entraremos em contato.</p>
+                  <h2>Entre em Contato / Envie um Projeto</h2>
+                  <p>Preencha o formulário abaixo. Seu pedido entrará automaticamente na nossa lista de "Fila de Espera".</p>
                   
-                  <form 
-                    name="pedidos-esf-v2" 
-                    method="POST" 
-                    data-netlify="true"
-                    action="pages/obrigado.html"
-                  >
-                      <div class="form-group">
-                          <label for="nome">Seu Nome Completo:</label>
-                          <input type="text" id="nome" name="nome" required>
-                      </div>
-                      <div class="form-group">
-                          <label for="email">Seu Melhor Email:</label>
-                          <input type="email" id="email" name="email" required>
-                      </div>
-                      <div class="form-group">
-                          <label for="telefone">Telefone / WhatsApp (Opcional):</label>
-                          <input type="tel" id="telefone" name="telefone">
-                      </div>
-                      <div class="form-group">
-                          <label for="assunto">Qual o motivo do contato?</label>
-                          <select id="assunto" name="assunto" required>
-                              <option value="" disabled selected>-- Selecione uma opção --</option>
-                              <option value="pedido-projeto">Tenho um pedido de projeto</option>
-                              <option value="quero-ser-voluntario">Quero ser voluntário(a)</option>
-                              <option value="parceria-empresa">Parceria / Empresa</option>
-                              <option value="outro">Outro</option>
-                          </select>
-                      </div>
-                      <div class="form-group">
-                          <label for="mensagem">Descreva seu pedido ou ideia:</label>
-                          <textarea id="mensagem" name="mensagem" rows="6" required></textarea>
-                      </div>
-                      <div class="form-group">
-                          <button type="submit" class="btn-submit">Enviar Pedido</button>
-                      </div>
-                  </form>
-              </div>
-
+                  <div class="google-form-wrapper">
+                      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfTem6dzYd57YAzIhmVgs-p1ZqAbnaenuh9ogBTOeii3o2YCA/viewform?embedded=true" width="600" height="800" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+                  </div>
+                  </div>
+              
               <div class="location-info-container">
                   <h2>Nossa Localização</h2>
                   
