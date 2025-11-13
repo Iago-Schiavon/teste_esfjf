@@ -928,3 +928,10 @@ img.hover-shadow {
     color: white;
     box-shadow: 0 4px 10px rgba(0, 170, 119, 0.3);
 }
+
+/* Estilo para o status "Na Fila" */
+.status-badge.na-fila { 
+    background: #eceff1; 
+    color: #455a64; 
+    border: 1px solid #cfd8dc; 
+}
