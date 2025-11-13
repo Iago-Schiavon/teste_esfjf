@@ -50,32 +50,108 @@ if (btnContainer) {
     }
 }
 
-// --- MODAL / LIGHTBOX ---
-function openModal() { document.getElementById("myModal").style.display = "block"; }
-function closeModal() { document.getElementById("myModal").style.display = "none"; }
+// ===================================================
+// --- LIGHTBOX DINÂMICO (NOVO) ---
+// ===================================================
 
-var slideIndex = 1;
-showSlides(slideIndex);
+let galleryImages = []; // Armazenará todas as imagens da galeria
+let currentSlideIndex = 0; // Índice da imagem atual no lightbox
 
-function plusSlides(n) { showSlides(slideIndex += n); }
-function currentSlide(n) { showSlides(slideIndex = n); }
+function openModal(element) {
+    // 1. Coleta todas as imagens da galeria (filtradas, se houver)
+    galleryImages = [];
+    const visibleColumns = document.querySelectorAll('.column.show'); // Pega apenas as colunas visíveis
+    visibleColumns.forEach(col => {
+        const img = col.querySelector('img');
+        if (img) {
+            galleryImages.push({
+                src: img.src,
+                alt: img.alt // Usamos o alt como título
+            });
+        }
+    });
+
+    if (galleryImages.length === 0) {
+        console.warn("Nenhuma imagem para exibir no lightbox.");
+        return;
+    }
+
+    // 2. Encontra o índice da imagem clicada
+    const clickedSrc = element.src;
+    currentSlideIndex = galleryImages.findIndex(img => img.src === clickedSrc);
+
+    // 3. Preenche o conteúdo do modal
+    const modalContent = document.querySelector("#myModal .modal-content");
+    
+    // Remove slides antigos (exceto os botões e caption)
+    const oldSlides = modalContent.querySelectorAll('.mySlides');
+    oldSlides.forEach(slide => slide.remove());
+
+    const oldThumbnails = modalContent.querySelector('.thumbnails-container');
+    if (oldThumbnails) oldThumbnails.remove();
+
+    // Cria os slides e miniaturas
+    let slidesHtml = '';
+    let thumbnailsHtml = '<div class="thumbnails-container">';
+
+    galleryImages.forEach((img, index) => {
+        slidesHtml += `
+            <div class="mySlides">
+                <div class="numbertext">${index + 1} / ${galleryImages.length}</div>
+                <img src="${img.src}" style="width:100%">
+            </div>
+        `;
+        thumbnailsHtml += `
+            <div class="column1">
+                <img class="demo cursor" src="${img.src}" style="width:100%" onclick="currentSlide(${index + 1})" alt="${img.alt}">
+            </div>
+        `;
+    });
+    thumbnailsHtml += '</div>';
+
+    // Insere os novos slides e miniaturas ANTES dos botões de navegação
+    modalContent.insertAdjacentHTML('afterbegin', slidesHtml);
+    modalContent.insertAdjacentHTML('beforeend', thumbnailsHtml);
+
+    // 4. Exibe o modal e a imagem correta
+    document.getElementById("myModal").style.display = "block";
+    showSlides(currentSlideIndex + 1); // +1 porque a contagem do showSlides é baseada em 1
+}
+
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+
+function plusSlides(n) {
+  showSlides(currentSlideIndex + 1 + n);
+}
+
+function currentSlide(n) {
+  showSlides(n);
+}
 
 function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  var captionText = document.getElementById("caption");
-  
-  if (slides.length === 0 || dots.length === 0 || !captionText) return;
+    // Ajusta o índice para base 0
+    currentSlideIndex = n - 1;
 
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
-  for (i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(" active", ""); }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;
+    // Garante que o índice esteja dentro dos limites
+    if (currentSlideIndex >= galleryImages.length) { currentSlideIndex = 0; }
+    if (currentSlideIndex < 0) { currentSlideIndex = galleryImages.length - 1; }
+
+    const slides = document.querySelectorAll("#myModal .mySlides");
+    const dots = document.querySelectorAll("#myModal .demo");
+    const captionText = document.getElementById("caption");
+
+    if (slides.length === 0 || dots.length === 0 || !captionText) return;
+
+    for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+    for (let i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(" active", ""); }
+
+    slides[currentSlideIndex].style.display = "block";
+    dots[currentSlideIndex].className += " active";
+    captionText.innerHTML = galleryImages[currentSlideIndex].alt;
 }
+
 
 // ===================================================
 // LÓGICA DO GOOGLE SHEETS (PROJETOS E FILA)
