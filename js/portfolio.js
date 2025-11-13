@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     if (projetosContainer) {
         // COLE O LINK DO PASSO 2 DENTRO DAS ASPAS ABAIXO:
-        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRnBEn7fjEv0Ynev083IznzXWd5AJj3beiwgInI6MOYU_by8dT0B8DBomvdwmzL84GIBfLTEwyb6RZt/pub?output=csv'; 
+        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRnBEn7fjEv0Ynev083IznzXWd5AJj3beiwgInI6MOYU_by8dT0B8DBomvdwmzL84GIBfLTEwyb6RZt/pub?gid=864836697&single=true&output=csv'; 
 
         Papa.parse(SHEET_URL, {
             download: true,
