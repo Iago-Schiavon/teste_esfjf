@@ -822,3 +822,78 @@ img.hover-shadow {
         margin-left: 0;
     }
 }
+
+/* ===================================================
+   ESTILOS DOS PROJETOS (Google Sheets)
+   =================================================== */
+
+.projetos-grid {
+    display: grid;
+    /* Cria colunas automáticas que se ajustam (mínimo 300px) */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+}
+
+.projeto-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: transform 0.2s;
+    border-top: 4px solid rgb(0, 170, 119); /* Sua cor oficial */
+    text-align: left;
+}
+
+.projeto-card:hover {
+    transform: translateY(-5px); /* Efeito de levantar */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    padding: 20px 20px 10px 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.projeto-card h4 {
+    margin: 0 0 10px 0;
+    color: #222;
+    font-size: 1.4em;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.data-inicio {
+    color: #777;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.descricao {
+    color: #555;
+    line-height: 1.5;
+}
+
+/* --- Badges de Status --- */
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Cores automáticas baseadas no texto da planilha */
+.status-badge.em-andamento { 
+    background: #e3f2fd; color: #1565c0; border: 1px solid #bbdefb; 
+}
+.status-badge.concluido { 
+    background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; 
+}
+.status-badge.planejamento { 
+    background: #fff3e0; color: #ef6c00; border: 1px solid #ffe0b2; 
+}

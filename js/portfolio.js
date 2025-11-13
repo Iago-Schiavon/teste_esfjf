@@ -254,12 +254,56 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error("Erro ao atualizar a fila:", error);
             containerElement.innerHTML = 
               `<p class="fila-tabela-mensagem" style="color: #c0392b;">${T.queueLoadingError}</p>`; // Usa texto traduzido
-        }
+        }        
     }
 
     // --- Execução da Fila ---
     atualizarFila();
     setInterval(atualizarFila, 30000);
+
+    // ===================================================
+    // --- 5. SCRIPT DE PROJETOS (Google Sheets) ---
+    // ===================================================
+    const projetosContainer = document.getElementById("lista-projetos");
+    
+    if (projetosContainer) {
+        // COLE O LINK DO PASSO 2 DENTRO DAS ASPAS ABAIXO:
+        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRnBEn7fjEv0Ynev083IznzXWd5AJj3beiwgInI6MOYU_by8dT0B8DBomvdwmzL84GIBfLTEwyb6RZt/pub?output=csv'; 
+
+        Papa.parse(SHEET_URL, {
+            download: true,
+            header: true, // Usa a 1ª linha da planilha como nome
+            complete: function(results) {
+                const projetos = results.data;
+                let htmlProjetos = "";
+
+                projetos.forEach(proj => {
+                    // Pula linhas vazias se houver
+                    if(!proj.Nome) return;
+
+                    // Cria o HTML de cada card
+                    htmlProjetos += `
+                        <div class="projeto-card">
+                            <div class="card-header">
+                                <h4>${proj.Nome}</h4>
+                                <span class="status-badge ${proj.Status.toLowerCase().replace(' ', '-')}">${proj.Status}</span>
+                            </div>
+                            <div class="card-body">
+                                <p class="data-inicio"><i class="fa fa-calendar"></i> Início: ${proj.Data}</p>
+                                <p class="descricao">${proj.Descricao}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                projetosContainer.innerHTML = htmlProjetos;
+            },
+            error: function(err) {
+                console.error("Erro ao ler planilha:", err);
+                projetosContainer.innerHTML = "<p>Erro ao carregar projetos. Tente recarregar.</p>";
+            }
+        });
+    }    
 
 });
 // ===================================================
