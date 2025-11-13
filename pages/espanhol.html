@@ -1,6 +1,10 @@
 <!doctype html>
-<html lang="es"> <head>
-    <title>ISF Juiz de Fora</title> <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+<html lang="es">
+ <head>
+    <title>ISF Juiz de Fora</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
     <link rel="manifest" href="../outros/site.webmanifest">
@@ -14,18 +18,25 @@
 
  <body>
     <div class="sidenav">
-
         <div class="sidenav-header">
           <div class="responsive icon-side">
-              <img src="../img/esf_juiz_de_fora_logo-Photoroom.png" alt="Logo Ingenieros Sin Fronteras Juiz de Fora"> </div>
-          <h3>Ingenieros Sin Fronteras-JF</h3> </div>
+              <img src="../img/esf_juiz_de_fora_logo-Photoroom.png" alt="Logo Ingenieros Sin Fronteras Juiz de Fora">
+          </div>
+          <h3>Ingenieros Sin Fronteras-JF</h3>
+        </div>
 
         <nav class="sidenav-nav">
-          <a href="#home"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a> <a href="#portfolio"><i class="fa-solid fa-folder-open"></i> Portafolio</a> <a href="#about"><i class="fa-solid fa-id-card"></i> Sobre Nosotros</a> <a href="#contact"><i class="fa-solid fa-envelope"></i> Contacto</a> </nav>
+          <a href="#home"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
+          <a href="#portfolio"><i class="fa-solid fa-folder-open"></i> Portafolio</a>
+          <a href="#about"><i class="fa-solid fa-id-card"></i> Sobre Nosotros</a>
+          <a href="#contact"><i class="fa-solid fa-envelope"></i> Contacto</a>
+        </nav>
 
         <div class="sidenav-footer">
             <div class="sidenav-group" id="lang-group">
-                <a href="../index.html"><img src="../img/br.png" alt="Portugués (Brasil)"></a> <a href="ingles.html"><img src="../img/us.svg" alt="Inglés"></a> </div>
+                <a href="../index.html"><img src="../img/br.png" alt="Portugués (Brasil)"></a>
+                <a href="ingles.html"><img src="../img/us.svg" alt="Inglés"></a>
+            </div>
 
             <div class="sidenav-group" id="social-group">
               <a href="mailto:iago.ctrlplay@gmail.com" target="_blank" aria-label="Email"><i class="fa fa-envelope" aria-hidden="true"></i></a>
@@ -35,19 +46,21 @@
               <a href="https://br.linkedin.com/company/esf-juiz-de-fora" target="_blank" aria-label="LinkedIn"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
             </div>
         </div>
+    </div>
 
-      </div>
-      <div class="main">
+    <div class="main">
         <div class="main-content-wrapper">
           <div class="header" id="home">
             <div class="header-content">
-                <p id="greeting">Cargando...</p> <h2>Ingenieros Sin Fronteras - Núcleo Juiz de Fora</h2> </div>
+                <p id="greeting">Cargando...</p>
+                <h2>Ingenieros Sin Fronteras - Núcleo Juiz de Fora</h2>
+            </div>
             
             <div class="header-date">
-                <h4 id="date"></h4> </div>
+                <h4 id="date"></h4>
+            </div>
           </div>
           
-          <!-- Buttons Filters Grid-->
           <div id="portfolio">
               <div id="myBtnContainer">
                   <button class="btn active" onclick="filterSelection('all')"> Mostrar todo</button>
@@ -55,216 +68,103 @@
                   <button class="btn" onclick="filterSelection('cars')"> Proyectos</button>
               </div> 
           </div>
-          <!-- Portfolio Gallery Grid -->
+
           <div class="row">
               <div class="column nature">
                 <div class="content">
-                  <img src="../img2/mountains.jpg" alt="Montañas" style="width:100%" class="responsive" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+                  <img src="../img2/mountains.jpg" alt="Montañas" style="width:100%" class="responsive" onclick="openModal(this)" class="hover-shadow cursor">
                   <h4>Montañas</h4>
                   <p>Texto de ejemplo...</p>
                 </div>
               </div>
-              <div class="column nature">
-                <div class="content">
-                  <img src="../img2/lights.jpg" alt="Luces" style="width:100%" class="responsive" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
-                  <h4>Luces</h4>
-                  <p>Texto de ejemplo...</p>
-                </div>
-              </div>
-              <div class="column nature">
-                <div class="content">
-                  <img src="../img2/nature.jpg" alt="Naturaleza" style="width:100%" class="responsive" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
-                  <h4>Bosque</h4>
-                  <p>Texto de ejemplo...</p>
-                </div>
-              </div>
-              <div class="column nature">
-                  <div class="content">
-                    <img src="../img2/mountains.jpg" alt="Montañas" style="width:100%" class="responsive" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
-                    <h4>Montañas</h4>
-                    <p>Texto de ejemplo...</p>
-                  </div>
-              </div>
-              <div class="column nature">
-                  <div class="content">
-                    <img src="../img2/lights.jpg" alt="Luces" style="width:100%" class="responsive" onclick="openModal();currentSlide(5)" class="hover-shadow cursor">
-                    <h4>Luces</h4>
-                    <p>Texto de ejemplo...</p>
-                  </div>
-              </div>
-              <!---------------------------------------------------------------->
               <div class="column cars">
                 <div class="content">
-                  <img src="../img2/cars1.jpg" alt="Coche" style="width:100%" class="responsive"  onclick="openModal();currentSlide(6)" class="hover-shadow cursor">
+                  <img src="../img2/cars1.jpg" alt="Coche" style="width:100%" class="responsive" onclick="openModal(this)" class="hover-shadow cursor">
                   <h4>Proyecto Retro</h4>
                   <p>Texto de ejemplo...</p>
                 </div>
               </div>
-              <div class="column cars">
-                <div class="content">
-                  <img src="../img2/cars2.jpg" alt="Coche" style="width:100%" class="responsive"  onclick="openModal();currentSlide(7)" class="hover-shadow cursor">
-                  <h4>Proyecto Rápido</h4>
-                  <p>Texto de ejemplo...</p>
-                </div>
-              </div>
-              <div class="column cars">
-                <div class="content">
-                  <img src="../img2/cars3.jpg" alt="Coche" style="width:100%" class="responsive"  onclick="openModal();currentSlide(8)" class="hover-shadow cursor">
-                  <h4>Proyecto Clásico</h4>
-                  <p>Texto de ejemplo...</p>
-                </div>
-              </div>
-              <!-- END GRID -->
           </div>
           
-          <!-- LIGHTBOX -->
           <div id="myModal" class="modal">
-            <span class="close cursor" onclick="closeModal()">&times;</span>
+            <span class="close cursor" onclick="closeModal()">×</span>
             <div class="modal-content">
-          
-              <div class="mySlides">
-                <div class="numbertext">1 / 8</div>
-                <img src="../img2/nature.jpg" style="width:auto;">
-              </div>
-          
-              <div class="mySlides">
-                <div class="numbertext">2 / 8</div>
-                <img src="../img2/img_snow.jpg" style="width:auto;">
-              </div>
-          
-              <div class="mySlides">
-                <div class="numbertext">3 / 8</div>
-                <img src="../img2/mountains.jpg" style="width:auto;">
-              </div>
-              
-              <div class="mySlides">
-                <div class="numbertext">4 / 8</div>
-                <img src="../img2/lights.jpg" style="width:auto;">
-              </div>
-
-              <div class="mySlides">
-                <div class="numbertext">5 / 8</div>
-                <img src="../img2/mountains.jpg" style="width:auto;">
-              </div>
-
-              <div class="mySlides">
-                <div class="numbertext">6 / 8</div>
-                <img src="../img2/nature.jpg" style="width:auto;">
-              </div>
-
-              <div class="mySlides">
-                <div class="numbertext">7 / 8</div>
-                <img src="../img2/lights.jpg" style="width:auto;">
-              </div>
-
-              <div class="mySlides">
-                <div class="numbertext">8 / 8</div>
-                <img src="../img2/img_snow.jpg" style="width:auto;">
-              </div>
-              
-              <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-              <a class="next" onclick="plusSlides(1)">&#10095;</a>
-          
-              <div class="caption-container">
-                <p id="caption"></p>
-              </div>
-          
-              <div>
-                <div class="column1">
-                  <img class="demo cursor" src="../img2/img_nature_wide.jpg" style="width:100%" onclick="currentSlide(1)" alt="Naturaleza">
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+                <div class="caption-container">
+                  <p id="caption"></p>
                 </div>
-                <div class="column1">
-                  <img class="demo cursor" src="../img2/img_snow_wide.jpg" style="width:100%" onclick="currentSlide(2)" alt="Nieve">
-                </div>
-                <div class="column1">
-                  <img class="demo cursor" src="../img2/img_mountains_wide.jpg" style="width:100%" onclick="currentSlide(3)" alt="Montañas">
-                </div>
-                <div class="column1">
-                  <img class="demo cursor" src="../img2/img_lights_wide.jpg" style="width:100%" onclick="currentSlide(4)" alt="Luces">
-                </div>
-                <div class="column1">
-                  <img class="demo cursor" src="../img2/img_mountains_wide.jpg" style="width:100%" onclick="currentSlide(5)" alt="Montañas">
-                </div>
-                <div class="column1">
-                  <img class="demo cursor" src="../img2/img_nature_wide.jpg" style="width:100%" onclick="currentSlide(6)" alt="Naturaleza">
-                </div>
-                <div class="column1">
-                  <img class="demo cursor" src="../img2/img_lights_wide.jpg" style="width:100%" onclick="currentSlide(7)" alt="Luces">
-                </div>
-                <div class="column1">
-                  <img class="demo cursor" src="../img2/img_snow_wide.jpg" style="width:100%" onclick="currentSlide(8)" alt="Nieve">
-                </div>
-              </div>
             </div>
           </div>
  
-          <div id="fila-container">
-            <div class="fila-conteudo">
-              <h3>Estado de la Fila de Proyectos</h3> <p>Siga el estado de las solicitudes en (casi) tiempo real.</p> <div id="fila-tabela-container">
-                  Cargando cola... </div>
-            </div>
+          <div id="projetos-container">
+              <div class="fila-conteudo">
+                  <h3>Proyectos y Fila</h3>
+                  <p>Siga nuestros proyectos en curso y la cola de espera en tiempo real.</p>
+                  
+                  <div class="filtros-projetos">
+                      <button class="btn-filtro active" onclick="filtrarProjetos('todos', this)">Todos</button>
+                      <button class="btn-filtro" onclick="filtrarProjetos('em-andamento', this)">En Progreso</button>
+                      <button class="btn-filtro" onclick="filtrarProjetos('na-fila', this)">En Espera</button>
+                      <button class="btn-filtro" onclick="filtrarProjetos('concluido', this)">Concluidos</button>
+                      <button class="btn-filtro" onclick="filtrarProjetos('planejamento', this)">Planificación</button>
+                  </div>
+                  
+                  <div id="lista-projetos" class="projetos-grid">
+                      Cargando datos...
+                  </div>
+              </div>
           </div>
 
           <div id="about">
               <div class="about-image">
-                  <img src="../img/planeta.svg" alt="Equipo ISF Juiz de Fora en acción"> </div>
+                  <img src="../img/planeta.svg" alt="Equipo ISF Juiz de Fora en acción">
+              </div>
               <div class="about-text">
-                  <h2>Sobre Nosotros</h2> <h3>Ingenieros Sin Fronteras - Brasil</h3> <p>
+                  <h2>Sobre Nosotros</h2>
+                  <h3>Ingenieros Sin Fronteras - Brasil</h3>
+                  <p>
                     Ingenieros Sin Fronteras (ISF) Brasil es una organización sin fines de lucro que cree en el poder de la ingeniería para transformar vidas y comunidades. Somos parte de la red global Engineers Without Borders - International (EWB-I) y operamos en Brasil desde 2010, impactando positivamente a más de 110,000 vidas.
                   </p>
-                  <h3>Ingenieros Sin Fronteras - Núcleo Juiz de Fora</h3> <p>
-                    La ONG está presente en 65 países y más de 70 ciudades brasileñas. El núcleo de Juiz de Fora fue fundado en 2015. Desde entonces, estudiantes y graduados en ingeniería y arquitectura han desarrollado y ejecutado más de 70 proyectos de forma totalmente voluntaria. Entre estos proyectos, destacan los de usucapión, recolección de agua de lluvia, reformas eléctricas y revitalizaciones, además de diversas acciones sociales y campañas de recaudación.
+                  <h3>Ingenieros Sin Fronteras - Núcleo Juiz de Fora</h3>
+                  <p>
+                    La ONG está presente en 65 países y más de 70 ciudades brasileñas. El núcleo de Juiz de Fora fue fundado en 2015. Desde entonces, estudiantes y graduados en ingeniería y arquitectura han desarrollado y ejecutado más de 70 proyectos de forma totalmente voluntaria.
                   </p>
                   <p>
-                      Nuestro núcleo en <strong>Juiz de Fora</strong> está compuesto por estudiantes y profesionales voluntarios que creen en la ingeniería y la arquitectura como agentes de transformación social. Desarrollamos proyectos que buscan soluciones accesibles para comunidades locales, enfocándonos en áreas como infraestructura, saneamiento, energías renovables y educación.
+                      Nuestro núcleo en <strong>Juiz de Fora</strong> está compuesto por estudiantes y profesionales voluntarios que creen en la ingeniería y la arquitectura como agentes de transformación social.
                   </p>                 
-                  <a href="#contact" class="btn-about">Únete</a> </div>
+                  <a href="#contact" class="btn-about">Únete</a>
+              </div>
           </div>
 
           <div id="contact">
               <div class="contact-form-container">
-                  <h2>Contáctanos</h2> <p>¿Tienes un proyecto, una idea o quieres participar? Completa el formulario a continuación y nos pondremos en contacto.</p> <form 
-                    name="pedidos-esf-v2" 
-                    method="POST" 
-                    data-netlify="true"
-                    action="obrigado-es.html" >
-                      
-                      <div class="form-group">
-                          <label for="nome">Tu Nombre Completo:</label> <input type="text" id="nome" name="nome" required>
-                      </div>
-                      <div class="form-group">
-                          <label for="email">Tu Mejor Email:</label> <input type="email" id="email" name="email" required>
-                      </div>
-                      <div class="form-group">
-                          <label for="telefone">Teléfono / WhatsApp (Opcional):</label> <input type="tel" id="telefone" name="telefone">
-                      </div>
-                      <div class="form-group">
-                          <label for="assunto">¿Cuál es el motivo del contacto?</label> <select id="assunto" name="assunto" required>
-                              <option value="" disabled selected>-- Seleccione una opción --</option> <option value="pedido-projeto">Tengo una solicitud de proyecto</option> <option value="quero-ser-voluntario">Quiero ser voluntario(a)</option> <option value="parceria-empresa">Colaboración / Empresa</option> <option value="outro">Otro</option> </select>
-                      </div>
-                      <div class="form-group">
-                          <label for="mensagem">Describe tu solicitud o idea:</label> <textarea id="mensagem" name="mensagem" rows="6" required></textarea>
-                      </div>
-                      <div class="form-group">
-                          <button type="submit" class="btn-submit">Enviar Solicitud</button> </div>
-                  </form>
+                  <h2>Contáctanos / Envía un Proyecto</h2>
+                  <p>Completa el formulario a continuación. Tu solicitud entrará automáticamente en nuestra "Cola de Espera".</p>
+                  
+                  <div class="google-form-wrapper">
+                      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfTem6dzYd57YAzIhmVgs-p1ZqAbnaenuh9ogBTOeii3o2YCA/viewform?embedded=true" width="600" height="800" frameborder="0" marginheight="0" marginwidth="0">Cargando...</iframe>
+                  </div>
               </div>
               
               <div class="location-info-container">
-                  <h2>Nuestra Ubicación</h2> <a href="https://maps.app.goo.gl/474Ddb7vtiDqiCPu9" target="_blank" class="location-link">
+                  <h2>Nuestra Ubicación</h2>
+                  <a href="https://maps.app.goo.gl/474Ddb7vtiDqiCPu9" target="_blank" class="location-link">
                       <i class="fa-solid fa-location-dot"></i> 
-                      Facultad de Ingeniería - UFJF Campus Juiz de Fora<br> Rua José Lourenço Kelmer, s/n - Bairro São Pedro<br>
-                      Sala 4143 - Observatorio de Educación en Ingeniería - OEE<br> Juiz de Fora, MG 36036-330, BR
+                      Facultad de Ingeniería - UFJF Campus Juiz de Fora<br>
+                      Rua José Lourenço Kelmer, s/n - Bairro São Pedro<br>
+                      Sala 4143 - Observatorio de Educación en Ingeniería - OEE<br>
+                      Juiz de Fora, MG 36036-330, BR
                   </a>
-                  <img src="../img/ufjf.jpg" alt="Puerta de la UFJF"> </div>
+                  <img src="../img/ufjf.jpg" alt="Puerta de la UFJF">
+              </div>
           </div>
 
         </div>
-        <p class="footer">Copyright © <span id="copyright-year">2025</span> Engenheiros Sem Fronteiras - Juiz de Fora</p>
+        <p class="footer">Copyright © <span id="copyright-year">2025</span> Ingenieros Sin Fronteras - Juiz de Fora</p> 
+    </div>
 
-      </div>
-
-   <script src="https://use.fontawesome.com/bca4cd3500.js"></script>
+    <script src="https://use.fontawesome.com/bca4cd3500.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
