@@ -639,9 +639,29 @@ img.hover-shadow {
     padding: 40px 20px;
     color: #333; 
     background-color: #f9f9f9;
+}
+
+/* ===================================================
+   NOVA SEÇÃO DE LOCALIZAÇÃO
+   =================================================== */
+#location {
+    display: flex;
+    flex-direction: column; /* Empilha itens */
+    align-items: center;    /* Centraliza horizontalmente */
+    padding: 40px 20px;
     
-    /* (NOVO) Adiciona espaço entre o formulário e o bloco de localização */
-    gap: 50px;
+    /* Vamos usar um fundo BRANCO para diferenciar da seção de contato cinza
+       Isso cria um visual elegante de "faixas" alternadas. */
+    background-color: #ffffff; 
+    
+    color: #333;
+}
+
+/* Pequeno ajuste se o fundo for branco:
+   Vamos adicionar uma borda sutil ao card de localização para ele não "sumir" no fundo branco */
+.location-info-container {
+    /* Mantém as regras que já existem e adiciona uma borda leve */
+    border: 1px solid #eee;
 }
 
 /* --- Bloco do Formulário --- */
@@ -974,4 +994,5 @@ img.hover-shadow {
     margin: 0 auto;       /* Centraliza horizontalmente */
     display: block;
     object-fit: contain;  /* Garante que a imagem inteira apareça sem cortes */
+
 }
