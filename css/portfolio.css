@@ -951,3 +951,27 @@ img.hover-shadow {
     max-width: 100%; /* Garante que não passe da largura */
     border: none;
 }
+
+/* ===================================================
+   AJUSTE DE TAMANHO DO LIGHTBOX
+   =================================================== */
+
+/* Centraliza o conteúdo do slide */
+.mySlides {
+    display: none;
+    text-align: center; /* Garante que a imagem fique no meio */
+    background-color: rgb(44, 44, 44); /* Cor de fundo para preencher espaços vazios */
+}
+
+/* Regra para a Imagem Principal do Modal */
+.mySlides img {
+    width: auto;          /* A largura se ajusta automaticamente */
+    max-width: 100%;      /* Nunca ultrapassa a largura da janela */
+    
+    /* O SEGREDO ESTÁ AQUI: */
+    max-height: 80vh;     /* A altura máxima será 80% da altura da tela */
+    
+    margin: 0 auto;       /* Centraliza horizontalmente */
+    display: block;
+    object-fit: contain;  /* Garante que a imagem inteira apareça sem cortes */
+}

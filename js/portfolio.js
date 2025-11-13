@@ -98,7 +98,7 @@ function openModal(element) {
         slidesHtml += `
             <div class="mySlides">
                 <div class="numbertext">${index + 1} / ${galleryImages.length}</div>
-                <img src="${img.src}" style="width:100%">
+                <img src="${img.src}">
             </div>
         `;
         thumbnailsHtml += `
