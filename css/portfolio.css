@@ -897,3 +897,34 @@ img.hover-shadow {
 .status-badge.planejamento { 
     background: #fff3e0; color: #ef6c00; border: 1px solid #ffe0b2; 
 }
+
+/* --- Botões de Filtro dos Projetos --- */
+.filtros-projetos {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.btn-filtro {
+    background-color: transparent;
+    border: 2px solid rgb(0, 170, 119);
+    color: rgb(0, 170, 119);
+    padding: 8px 16px;
+    margin: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.btn-filtro:hover {
+    background-color: rgba(0, 170, 119, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Estilo do botão ativo (selecionado) */
+.btn-filtro.active {
+    background-color: rgb(0, 170, 119);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 170, 119, 0.3);
+}

@@ -254,58 +254,106 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error("Erro ao atualizar a fila:", error);
             containerElement.innerHTML = 
               `<p class="fila-tabela-mensagem" style="color: #c0392b;">${T.queueLoadingError}</p>`; // Usa texto traduzido
-        }        
+        }
     }
 
     // --- Execução da Fila ---
     atualizarFila();
     setInterval(atualizarFila, 30000);
 
-    // ===================================================
-    // --- 5. SCRIPT DE PROJETOS (Google Sheets) ---
-    // ===================================================
+});
+
+// ===================================================
+// --- 5. SCRIPT DE PROJETOS COM FILTRO (Google Sheets) ---
+// ===================================================
+
+// Variável global para guardar os projetos na memória
+let todosOsProjetosGlobal = [];
+
+// Função chamada pelos botões do HTML
+function filtrarProjetos(categoria, botaoClicado) {
+    
+    // 1. Atualiza o visual dos botões (muda a classe .active)
+    if (botaoClicado) {
+        const botoes = document.querySelectorAll('.btn-filtro');
+        botoes.forEach(btn => btn.classList.remove('active'));
+        botaoClicado.classList.add('active');
+    }
+
+    // 2. Filtra e desenha
+    const container = document.getElementById("lista-projetos");
+    if (!container) return;
+
+    let htmlProjetos = "";
+    let contador = 0;
+
+    todosOsProjetosGlobal.forEach(proj => {
+        // Ignora linhas vazias
+        if(!proj.Nome) return;
+
+        // Normaliza o status (ex: "Em Andamento" vira "em-andamento")
+        // Remove acentos e espaços para comparação segura
+        let statusLimpo = proj.Status ? proj.Status.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-') : '';
+        
+        // LÓGICA DO FILTRO:
+        // Se a categoria for 'todos' OU se o status bater com a categoria...
+        // (Ex: status 'em-andamento' bate com filtro 'em-andamento')
+        if (categoria === 'todos' || statusLimpo.includes(categoria)) {
+            
+            contador++;
+            
+            // Define a cor do badge
+            let badgeClass = statusLimpo; // 'em-andamento', 'concluido', etc.
+
+            htmlProjetos += `
+                <div class="projeto-card">
+                    <div class="card-header">
+                        <h4>${proj.Nome}</h4>
+                        <span class="status-badge ${badgeClass}">${proj.Status}</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="data-inicio"><i class="fa fa-calendar"></i> Início: ${proj.Data}</p>
+                        <p class="descricao">${proj.Descricao}</p>
+                    </div>
+                </div>
+            `;
+        }
+    });
+
+    // Se não houver projetos no filtro selecionado
+    if (contador === 0) {
+        container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #777;">Nenhum projeto encontrado nesta categoria.</p>';
+    } else {
+        container.innerHTML = htmlProjetos;
+    }
+}
+
+// --- Inicialização (Carrega a planilha) ---
+document.addEventListener("DOMContentLoaded", function() {
     const projetosContainer = document.getElementById("lista-projetos");
     
     if (projetosContainer) {
-        // COLE O LINK DO PASSO 2 DENTRO DAS ASPAS ABAIXO:
-        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRnBEn7fjEv0Ynev083IznzXWd5AJj3beiwgInI6MOYU_by8dT0B8DBomvdwmzL84GIBfLTEwyb6RZt/pub?gid=864836697&single=true&output=csv'; 
+        // ⚠️ GARANTA QUE SEU LINK CSV ESTÁ AQUI:
+        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRnBEn7fjEv0Ynev083IznzXWd5AJj3beiwgInI6MOYU_by8dT0B8DBomvdwmzL84GIBfLTEwyb6RZt/pub?gid=864836697&single=true&output=csv'; // <--- RECOLE SEU LINK AQUI
 
         Papa.parse(SHEET_URL, {
             download: true,
-            header: true, // Usa a 1ª linha da planilha como nome
+            header: true,
             complete: function(results) {
-                const projetos = results.data;
-                let htmlProjetos = "";
-
-                projetos.forEach(proj => {
-                    // Pula linhas vazias se houver
-                    if(!proj.Nome) return;
-
-                    // Cria o HTML de cada card
-                    htmlProjetos += `
-                        <div class="projeto-card">
-                            <div class="card-header">
-                                <h4>${proj.Nome}</h4>
-                                <span class="status-badge ${proj.Status.toLowerCase().replace(' ', '-')}">${proj.Status}</span>
-                            </div>
-                            <div class="card-body">
-                                <p class="data-inicio"><i class="fa fa-calendar"></i> Início: ${proj.Data}</p>
-                                <p class="descricao">${proj.Descricao}</p>
-                            </div>
-                        </div>
-                    `;
-                });
-
-                projetosContainer.innerHTML = htmlProjetos;
+                // Salva os dados na variável global
+                todosOsProjetosGlobal = results.data;
+                
+                // Desenha todos os projetos inicialmente
+                filtrarProjetos('todos', null);
             },
             error: function(err) {
                 console.error("Erro ao ler planilha:", err);
-                projetosContainer.innerHTML = "<p>Erro ao carregar projetos. Tente recarregar.</p>";
+                projetosContainer.innerHTML = "<p>Erro ao carregar projetos.</p>";
             }
         });
-    }    
-
+    }
 });
+
 // ===================================================
 // FIM DO ARQUIVO portfolio.js
 // ===================================================
