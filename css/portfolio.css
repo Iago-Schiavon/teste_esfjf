@@ -1,3 +1,6 @@
+/* ===================================================
+   RESET E GERAL
+   =================================================== */
 div {
     display: block;
     padding: 0px;
@@ -9,36 +12,31 @@ html, body {
     padding: 0;
     border: 0;
     scroll-behavior: smooth;
+    font-family: Arial, sans-serif; /* Garante fonte padrão */
 }
 
 /* Define TODAS as imagens do site como responsivas */
 img {
     max-width: 100%;
-    height:auto;
+    height: auto;
 }
 
 /* ===================================================
-   STICKY FOOTER (Rodapé Fixo com Flexbox)
+   ESTRUTURA PRINCIPAL (Sidenav + Conteúdo)
    =================================================== */
 
-/* 1. Transforma o .main (que já tem a sidenav)
-      num contêiner flexível */
+/* O .main é o contêiner da direita (que não é a sidenav) */
 .main {
-    margin-left: 20%; /* Mesmo que a largura do sidenav (original) */
-
-    /* NOSSAS NOVAS REGRAS */
-    display: flex;           /* Ativa o Flexbox */
-    flex-direction: column;  /* Itens ficarão em coluna */
-    
-    /* Faz o .main ter, no mínimo, 100% da altura da tela */
+    margin-left: 20%; /* Espaço para a sidenav fixa */
+    display: flex;
+    flex-direction: column;
     min-height: 100vh; 
 }
 
-/* 2. Esta é a nova <div> que criámos */
+/* Embrulho do conteúdo para empurrar o footer */
 .main-content-wrapper {
-    /* Diz a este "embrulho" para crescer e ocupar
-       todo o espaço vertical vago que existir. */
     flex-grow: 1;
+    width: 100%; /* Garante largura total */
 }
 
 /* FOOTER */
@@ -47,100 +45,19 @@ img {
     font-size: 1.2em;
     font-weight: bold;
     color: rgb(10, 10, 10);
-    padding: 10px; 
-    
-    /* A CORREÇÃO: Centraliza o <p> do copyright
-       dentro do seu "pai" flex (.main) */
-    align-self: center;
+    padding: 20px 10px;
+    background-color: #f1f1f1; /* Fundo leve para separar */
+    align-self: stretch; /* Ocupa a largura toda */
 }
 
 /* ===================================================
-   HEADER (Design Moderno e Dinâmico)
+   SIDENAV (Barra Lateral)
    =================================================== */
-
-.header {
-    /* 1. LAYOUT (FLEXBOX) */
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    padding: 30px 40px;
-    
-    /* COR ATUALIZADA */
-    background-color: rgb(0, 170, 119); 
-    
-    border-bottom: 1px solid #999999; 
-    color: #ffffff; 
-}
-
-/* --- Bloco da Esquerda: Título e Saudação --- */
-.header-content {
-    /* Não precisa de nada especial */
-}
-
-.header-content h2 {
-    margin: 0;
-    font-size: 1.8em;
-    font-weight: 600;
-    
-    /* COR ATUALIZADA (para contraste) */
-    color: #ffffff; 
-}
-
-.header-content p#greeting {
-    margin: 0 0 5px 0;
-    font-size: 1.1em;
-    font-weight: 400;
-    color: #ffffff; /* Cor mais suave */
-}
-
-/* --- Bloco da Direita: Data --- */
-.header-date {
-    text-align: right;
-}
-
-.header-date h4 {
-    margin: 0;
-    font-size: 1.1em;
-    font-weight: 500;
-    color: #ffffff;
-}
-
-/* --- RESPONSIVIDADE DO HEADER --- */
-@media screen and (max-width: 600px) {
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 20px;
-    }
-
-    .header-date {
-        margin-top: 15px;
-        width: 100%;
-        text-align: left;
-    }
-    
-    .header-date h4 {
-        text-align: left;
-    }
-}
-
-/* RESPONSIVE -----------------------------------------------------------------------*/
-.responsive {
-    width: 100%;
-    max-width: 200px;
-    height: auto;
-}
-
-/* SIDENAV --------------------------------------------------------------------------*/
-/* ===================================================
-   SIDENAV (Design Moderno e Organizado)
-   =================================================== */
-
 .sidenav {
     height: 100%;
     width: 20%;
     position: fixed;
-    z-index: 1;
+    z-index: 100; /* Z-index alto para ficar por cima */
     top: 0;
     left: 0;
     background-color: #f8f9fa;
@@ -152,7 +69,6 @@ img {
     overflow-x: hidden; 
 }
 
-/* --- Grupo 1: Logo e Título --- */
 .sidenav-header {
     text-align: center;
     margin-bottom: 25px;
@@ -162,10 +78,6 @@ img {
     width: 70%;
     margin: 0 auto 15px auto;
 }
-.icon-side img {
-    max-width: 100%;
-    height: auto;
-}
 
 .sidenav h3 {
     color: #161616;
@@ -173,11 +85,6 @@ img {
     margin: 0;
 }
 
-/* --- Grupo 2: Navegação Principal --- */
-.sidenav-nav {
-    /* Esta 'nav' vai conter os links */
-}
-  
 .sidenav-nav a {
     display: block;
     text-decoration: none;
@@ -196,30 +103,26 @@ img {
     margin-right: 10px;
     text-align: center;
     color: #262626;
-    transition: color 0.2s; /* Adicionado para suavizar */
+    transition: color 0.2s;
 }
   
 .sidenav-nav a:hover {
     background-color: #e9ecef;
-    
-    /* COR ATUALIZADA */
     color: rgb(0, 170, 119); 
 }
 
 .sidenav-nav a:hover i{
-    /* COR ATUALIZADA */
     color: rgb(0, 170, 119);
 }
 
-/* --- Grupo 3: Rodapé da Sidenav --- */
 .sidenav-footer {
     margin-top: auto; 
 }
 
 .sidenav-group {
     display: flex;
-    justify-content: left;
-    align-items: left;
+    justify-content: flex-start; /* Corrigido de 'left' */
+    align-items: center;         /* Corrigido de 'left' */
     padding: 10px 0;
 }
 
@@ -242,303 +145,158 @@ img {
     transition: color 0.2s, transform 0.2s;
 }
 #social-group a:hover {
-    /* COR ATUALIZADA */
     color: rgb(0, 170, 119); 
     transform: scale(1.15);
 }
-  
-@media screen and (max-height: 450px) {
-    .sidenav-header {
-        display: none;
-    }
-    .sidenav-nav a {
-        font-size: 0.9em;
-        padding: 8px 15px;
-        margin: 2px 0;
-    }
-}
 
 /* ===================================================
-   ESTILOS DA SEÇÃO "ABOUT" (Sobre Nós)
+   HEADER
    =================================================== */
-
-#about {
+.header {
     display: flex;
+    justify-content: space-between; 
     align-items: center;
-    flex-wrap: wrap;
-    padding: 60px 40px;
-    background-color: #ffffff;
-    color: #161616;
-    gap: 40px; 
-}
-
-.about-image {
-    flex: 1 1 350px; 
-}
-.about-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 25px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.about-text {
-    flex: 2 1 400px;
-}
-.about-text h2 {
-    font-size: 2.4em;
-    font-weight: 700;
-    margin-top: 0;
-    margin-bottom: 10px;
-    color: #222;
-}
-.about-text h3 {
-    font-size: 1.4em;
-    font-weight: 500;
-    
-    /* COR ATUALIZADA */
-    color: rgb(0, 170, 119); 
-    
-    margin-bottom: 25px;
-}
-.about-text p {
-    font-size: 1.1em;
-    line-height: 1.6;
-    color: #444;
-    margin-bottom: 20px;
-}
-
-.btn-about {
-    display: inline-block;
-    
-    /* COR ATUALIZADA */
+    padding: 30px 40px;
     background-color: rgb(0, 170, 119); 
-    
-    color: #ffffff;
-    padding: 12px 25px;
-    font-size: 1.1em;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background-color 0.3s, transform 0.2s;
-    text-transform: uppercase;
-}
-/* --- Estilo do Botão "Faça Parte" --- */
-.btn-about:hover {
-    /* COR ATUALIZADA (Mais escura) */
-    background-color: rgb(0, 145, 102); 
-    
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    text-decoration: none;
-    
-    /* A CORREÇÃO: Força o texto a ficar branco */
+    border-bottom: 1px solid #999999; 
     color: #ffffff; 
 }
 
-/* ===================================================
-   ESTILOS DA SEÇÃO DE FILA DE ESPERA
-   =================================================== */
-
-#fila-container {
-    padding: 40px 20px;
-    background-color: #f4f4f4;
-    text-align: center;
-    color: #333;
+.header-content h2 {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #ffffff; 
 }
 
-.fila-conteudo {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.fila-conteudo h3 {
-    font-size: 2em;
-    font-weight: 700;
-    color: #222;
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.fila-conteudo p {
+.header-content p#greeting {
+    margin: 0 0 5px 0;
     font-size: 1.1em;
-    margin-bottom: 25px;
-    color: #555;
+    font-weight: 400;
+    color: #ffffff; 
 }
 
-#fila-tabela-container {
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    overflow: hidden;
+.header-date {
+    text-align: right;
 }
 
-.fila-tabela-mensagem {
-    padding: 30px;
-    font-size: 1.2em;
+.header-date h4 {
+    margin: 0;
+    font-size: 1.1em;
     font-weight: 500;
-    color: #555;
+    color: #ffffff;
 }
 
-.fila-tabela {
-    width: 100%;
-    border-collapse: collapse;
+/* ===================================================
+   FILTRO E GALERIA (PORTFOLIO)
+   =================================================== */
+#portfolio {
+    padding: 20px;
+    text-align: center;
 }
 
-.fila-tabela th,
-.fila-tabela td {
-    padding: 15px 20px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
+/* Botões de Filtro da Galeria */
+.btn {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    margin: 10px 5px;
+    background-color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.0em;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+.btn:hover {
+    background-color: #ddd;
+}
+.btn.active {
+    background-color: #666;
+    color: white;
 }
 
-.fila-tabela th {
-    background-color: #f8f9fa;
-    font-size: 0.9em;
-    color: #333;
-    text-transform: uppercase;
-}
-
-.fila-tabela td.posicao {
-    font-weight: 700;
-    
-    /* COR ATUALIZADA */
-    color: rgb(0, 170, 119); 
-    
-    width: 80px;
-}
-
-.fila-tabela td.nome {
-    font-weight: 500;
-    color: #222;
-}
-
-/* Estilo para a nova coluna de Data */
-.fila-tabela .col-data {
-    text-align: right; /* Alinha o título "Data" à direita */
-}
-
-.fila-tabela td.data {
-    text-align: right; /* Alinha a data à direita */
-    color: #777; /* Cor cinza mais sutil */
-    font-size: 0.9em;
-    font-family: monospace; /* Fonte monoespaçada para datas */
-}
-
-/*IMAGE GRID -----------------------------------------------------------------------------*/
+/* Grid da Galeria */
 .row {
     margin: 8px 8px;
 }
-  
-.row,
-.row > .column {
-    padding: 6px;
-}   
-  
-.column {
-    float: left;
-    width: 25%;
-    display: none; /* Hide columns by default */
-}
-  
 .row:after {
     content: "";
     display: table;
     clear: both;
 }
-  
-.content {
-    /* COR ATUALIZADA */
-    background-color: rgb(0, 170, 119);
-    
-    padding: 6px;
-    color: #ffffff; /* Ajustado para branco (contraste) */
-    font-weight: 500;    
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-align: center;
-}
-
-.content p{
-    font-size: 1.1em;
-}
-
-.content img{
-  display: block;
-  margin-bottom: 2px;
-  margin-left: auto;
-  margin-right: auto;
-}
-  
-.show {
-    display: block;
-}
-  
-.btn {
-    border: none;
-    outline: none;
-    padding: 12px 16px;
-    margin-top: 15px;
-    margin-left: 20px;
-    background-color: white;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1.0em;
-}
-  
-.btn:hover {
-    background-color: #ddd;
-}
-  
-.btn.active {
-    background-color: #666;
-     color: white;
-}
-
-
-/* LIGHTBOX -----------------------------------------------------------------------------*/
-.row1 > .column1 {
-    padding: 0 8px;
-}
-  
-.row1:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-  
-.column1 {
+.column {
     float: left;
-    width: 12.5%;
+    width: 25%;
+    display: none; /* Oculto por padrão */
+    box-sizing: border-box;
+    padding: 6px;
 }
-  
+.show {
+    display: block; /* Mostra se tiver a classe */
+}
+
+/* Cards da Galeria */
+.content {
+    background-color: rgb(0, 170, 119);
+    padding: 6px;
+    color: #ffffff;
+    font-weight: 500;    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border-radius: 4px;
+    height: 100%; /* Garante altura igual */
+}
+.content img {
+    display: block;
+    margin: 0 auto 10px auto;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.content img:hover {
+    opacity: 0.8;
+}
+
+/* ===================================================
+   LIGHTBOX (MODAL)
+   =================================================== */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
-    padding-top: 100px;
+    z-index: 200; /* Z-index bem alto */
+    padding-top: 50px;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(44, 44, 44);
-    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
-.modal::-webkit-scrollbar{
-    display: none;
-}
-  
 .modal-content {
     position: relative;
-    background-color: rgb(44, 44, 44);
+    background-color: transparent;
     margin: auto;
     padding: 0;
     width: 90%;
     max-width: 1200px;
 }
-  
+
+.mySlides {
+    display: none;
+    text-align: center;
+}
+
+.mySlides img {
+    width: auto;
+    max-width: 100%;
+    max-height: 80vh; /* Limita a altura */
+    margin: 0 auto;
+    display: block;
+    object-fit: contain;
+}
+
 .close {
     color: white;
     position: absolute;
@@ -546,31 +304,12 @@ img {
     right: 25px;
     font-size: 45px;
     font-weight: bold;
-}
-  
-.close:hover,
-.close:focus {
-    color: #ff0000;
-    text-decoration: none;
     cursor: pointer;
+    z-index: 201;
 }
-  
-.mySlides {
-    display: none;
-}
+.close:hover { color: #999; }
 
-.mySlides img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-  
-.cursor {
-    cursor: pointer;
-}
-  
-.prev,
-.next {
+.prev, .next {
     cursor: pointer;
     position: absolute;
     top: 50%;
@@ -581,345 +320,57 @@ img {
     font-weight: bold;
     font-size: 30px;
     transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
     user-select: none;
-    -webkit-user-select: none;
 }
-  
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-  
-.prev:hover,
-.next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-  
+.next { right: 0; border-radius: 3px 0 0 3px; }
+.prev:hover, .next:hover { background-color: rgba(0, 0, 0, 0.8); }
+
 .numbertext {
-    color: white;
-    font-size: 1.6em;
-    font-weight: 700;
+    color: #f2f2f2;
+    font-size: 12px;
     padding: 8px 12px;
     position: absolute;
     top: 0;
 }
-  
+
 .caption-container {
     text-align: center;
-    background-color: rgb(44, 44, 44);
-    padding-top: 5px;
-    padding-bottom: 5px;
+    background-color: black;
+    padding: 10px 16px;
     color: white;
 }
-  
-.demo {
-    opacity: 0.7;
+
+/* Miniaturas do Lightbox */
+.column1 {
+    float: left;
+    width: 12.5%;
+    padding: 0 2px;
+    box-sizing: border-box;
 }
-  
-.active,
-.demo:hover {
+.demo {
+    opacity: 0.6;
+    cursor: pointer;
+}
+.active, .demo:hover {
     opacity: 1;
 }
-  
-img.hover-shadow {
-    transition: 0.3s;
-}
 
 /* ===================================================
-   ESTILOS MODERNOS PARA A SEÇÃO "CONTACT" (com Flexbox)
+   SEÇÃO: PROJETOS E FILA (Google Sheets)
    =================================================== */
-
-/* (ESTE BLOCO SUBSTITUI SEUS ANTIGOS ESTILOS #contact) */
-
-#contact {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#projetos-container {
     padding: 40px 20px;
-    color: #333; 
-    background-color: #f9f9f9;
-}
-
-/* ===================================================
-   NOVA SEÇÃO DE LOCALIZAÇÃO (Adicione isso ao final)
-   =================================================== */
-
-#location {
-    display: flex;
-    flex-direction: column; /* Empilha o título e o card */
-    align-items: center;    /* Centraliza tudo horizontalmente */
-    padding: 40px 20px;     /* Espaçamento interno */
-    
-    /* Fundo BRANCO para contrastar com o cinza do formulário acima */
-    background-color: #ffffff; 
-    
+    background-color: #f4f4f4;
+    text-align: center;
     color: #333;
 }
 
-/* Ajuste fino para o card de localização quando está no fundo branco */
-.location-info-container {
-    /* Adiciona uma borda sutil para o card não "sumir" no fundo branco */
-    border: 1px solid #eee; 
+.fila-conteudo {
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-/* --- Bloco do Formulário --- */
-.contact-form-container {
-    max-width: 800px;
-    width: 100%;
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    box-sizing: border-box;
-}
-
-.contact-form-container h2 {
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 10px;
-    color: #222;
-    font-size: 2.2em;
-}
-
-.contact-form-container p {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 1.1em;
-    color: #555;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #444;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-size: 1em;
-    font-family: Arial, sans-serif;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    
-    /* COR ATUALIZADA */
-    border-color: rgb(0, 170, 119); 
-    box-shadow: 0 0 5px rgba(0, 170, 119, 0.5);
-}
-
-.btn-submit {
-    width: 100%;
-    
-    /* COR ATUALIZADA */
-    background-color: rgb(0, 170, 119); 
-    
-    color: #ffffff;
-    padding: 15px;
-    font-size: 1.2em;
-    font-weight: 600;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.btn-submit:hover {
-    /* COR ATUALIZADA (Mais escura) */
-    background-color: rgb(0, 145, 102); 
-    
-    transform: translateY(-2px);
-}
-
-/* --- (NOVO) Bloco de Localização --- */
-.location-info-container {
-    max-width: 800px;
-    width: 100%;
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    box-sizing: border-box;
-    text-align: center;
-    flex-shrink: 0; /* Garante que o flex pai não o encolha */
-}
-
-.location-info-container h2 {
-    text-align: center; 
-    margin-top: 0;
-    margin-bottom: 20px;
-    color: #222;
-    font-size: 2.2em;
-}
-
-.location-info-container .location-link {
-    display: inline-block;
-    font-size: 1.1em;
-    color: rgb(0, 145, 102); /* Cor mais escura */
-    text-decoration: none;
-    line-height: 1.6;
-    transition: transform 0.2s;
-    margin-bottom: 30px;
-}
-
-.location-info-container .location-link i {
-    margin-right: 8px;
-    color: #ff0000;
-}
-
-.location-info-container .location-link:hover {
-    text-decoration: none;
-    transform: scale(1.02);
-}
-
-.location-info-container img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 8px; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-}
-
-
-/* ===================================================
-   INSTRUÇÕES PARA TELAS MENORES (RESPONSIVIDADE)
-   =================================================== */
-@media screen and (max-width: 768px) {
-
-    .sidenav {
-        width: 100%;
-        height: auto;
-        position: relative;
-        overflow-y: auto;
-    }
-
-    .main {
-        margin-left: 0;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-
-    .column {
-        width: 50%;
-    }
-}
-
-@media screen and (max-width: 480px) {
-
-    .column {
-        width: 100%;
-    }
-    
-    /* Esta regra é do seu código antigo. 
-       Ela é substituída pela regra 'max-width: 600px'
-       que está perto do topo do arquivo, mas não há problema
-       em deixá-la aqui por enquanto. */
-    .header h4 {
-        float: none;
-        text-align: center;
-        margin-right: 0;
-    }
-    .header p {
-        text-align: center;
-        margin-left: 0;
-    }
-}
-
-/* ===================================================
-   ESTILOS DOS PROJETOS (Google Sheets)
-   =================================================== */
-
-.projetos-grid {
-    display: grid;
-    /* Cria colunas automáticas que se ajustam (mínimo 300px) */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    padding: 20px 0;
-}
-
-.projeto-card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    overflow: hidden;
-    transition: transform 0.2s;
-    border-top: 4px solid rgb(0, 170, 119); /* Sua cor oficial */
-    text-align: left;
-}
-
-.projeto-card:hover {
-    transform: translateY(-5px); /* Efeito de levantar */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-
-.card-header {
-    padding: 20px 20px 10px 20px;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.projeto-card h4 {
-    margin: 0 0 10px 0;
-    color: #222;
-    font-size: 1.4em;
-}
-
-.card-body {
-    padding: 20px;
-}
-
-.data-inicio {
-    color: #777;
-    font-size: 0.9em;
-    margin-bottom: 15px;
-}
-
-.descricao {
-    color: #555;
-    line-height: 1.5;
-}
-
-/* --- Badges de Status --- */
-.status-badge {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 0.8em;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* Cores automáticas baseadas no texto da planilha */
-.status-badge.em-andamento { 
-    background: #e3f2fd; color: #1565c0; border: 1px solid #bbdefb; 
-}
-.status-badge.concluido { 
-    background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; 
-}
-.status-badge.planejamento { 
-    background: #fff3e0; color: #ef6c00; border: 1px solid #ffe0b2; 
-}
-
-/* --- Botões de Filtro dos Projetos --- */
 .filtros-projetos {
-    text-align: center;
     margin-bottom: 30px;
 }
 
@@ -932,67 +383,240 @@ img.hover-shadow {
     border-radius: 20px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 0.9em;
     transition: all 0.3s ease;
 }
-
 .btn-filtro:hover {
     background-color: rgba(0, 170, 119, 0.1);
-    transform: translateY(-2px);
 }
-
-/* Estilo do botão ativo (selecionado) */
 .btn-filtro.active {
     background-color: rgb(0, 170, 119);
     color: white;
-    box-shadow: 0 4px 10px rgba(0, 170, 119, 0.3);
 }
 
-/* Estilo para o status "Na Fila" */
-.status-badge.na-fila { 
-    background: #eceff1; 
-    color: #455a64; 
-    border: 1px solid #cfd8dc; 
+.projetos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
 }
 
-/* Ajuste para o Google Forms Embutido */
+.projeto-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+    border-top: 4px solid rgb(0, 170, 119);
+    text-align: left;
+}
+
+.card-header {
+    padding: 20px 20px 10px 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.projeto-card h4 {
+    margin: 0 0 10px 0;
+    color: #222;
+    font-size: 1.4em;
+}
+
+.card-body {
+    padding: 20px;
+}
+.data-inicio {
+    color: #777;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+.descricao {
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Badges de Status */
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.status-badge.em-andamento { background: #e3f2fd; color: #1565c0; border: 1px solid #bbdefb; }
+.status-badge.concluido { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
+.status-badge.planejamento { background: #fff3e0; color: #ef6c00; border: 1px solid #ffe0b2; }
+.status-badge.na-fila { background: #eceff1; color: #455a64; border: 1px solid #cfd8dc; }
+
+/* ===================================================
+   SEÇÃO: SOBRE NÓS (ABOUT)
+   =================================================== */
+#about {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 60px 40px;
+    background-color: #ffffff;
+    color: #161616;
+    gap: 40px; 
+}
+
+.about-image { flex: 1 1 350px; }
+.about-image img {
+    width: 100%;
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.about-text { flex: 2 1 400px; }
+.about-text h2 {
+    font-size: 2.4em;
+    margin-bottom: 10px;
+    color: #222;
+}
+.about-text h3 {
+    font-size: 1.4em;
+    color: rgb(0, 170, 119); 
+    margin-bottom: 25px;
+}
+.about-text p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #444;
+}
+
+.btn-about {
+    display: inline-block;
+    background-color: rgb(0, 170, 119); 
+    color: #ffffff;
+    padding: 12px 25px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+.btn-about:hover {
+    background-color: rgb(0, 145, 102); 
+    transform: translateY(-2px);
+    color: #ffffff; /* Força texto branco */
+}
+
+/* ===================================================
+   SEÇÃO: CONTATO
+   =================================================== */
+#contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    color: #333; 
+    background-color: #f9f9f9;
+    width: 100%; /* Garante largura total */
+    box-sizing: border-box;
+}
+
+.contact-form-container {
+    max-width: 800px;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+.contact-form-container h2 { text-align: center; color: #222; }
+.contact-form-container p { text-align: center; color: #555; }
+
 .google-form-wrapper {
     position: relative;
     overflow: hidden;
     width: 100%;
-    padding-top: 20px;
     display: flex;
     justify-content: center;
 }
-
 .google-form-wrapper iframe {
     width: 100%;
-    max-width: 100%; /* Garante que não passe da largura */
+    max-width: 100%;
     border: none;
 }
 
 /* ===================================================
-   AJUSTE DE TAMANHO DO LIGHTBOX
+   SEÇÃO: LOCALIZAÇÃO
    =================================================== */
-
-/* Centraliza o conteúdo do slide */
-.mySlides {
-    display: none;
-    text-align: center; /* Garante que a imagem fique no meio */
-    background-color: rgb(44, 44, 44); /* Cor de fundo para preencher espaços vazios */
+#location {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: #ffffff; 
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Regra para a Imagem Principal do Modal */
-.mySlides img {
-    width: auto;          /* A largura se ajusta automaticamente */
-    max-width: 100%;      /* Nunca ultrapassa a largura da janela */
-    
-    /* O SEGREDO ESTÁ AQUI: */
-    max-height: 80vh;     /* A altura máxima será 80% da altura da tela */
-    
-    margin: 0 auto;       /* Centraliza horizontalmente */
-    display: block;
-    object-fit: contain;  /* Garante que a imagem inteira apareça sem cortes */
-
+.location-info-container {
+    max-width: 800px;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    text-align: center;
 }
 
+.location-info-container h2 {
+    color: #222;
+    margin-bottom: 20px;
+}
+
+.location-info-container .location-link {
+    display: inline-block;
+    font-size: 1.1em;
+    color: rgb(0, 145, 102);
+    text-decoration: none;
+    margin-bottom: 30px;
+}
+.location-info-container .location-link i {
+    margin-right: 8px;
+    color: #ff0000;
+}
+.location-info-container img {
+    max-width: 100%;
+    border-radius: 8px; 
+}
+
+/* ===================================================
+   MEDIA QUERIES (RESPONSIVIDADE)
+   =================================================== */
+@media screen and (max-width: 768px) {
+    .sidenav {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .main {
+        margin-left: 0;
+    }
+    .column {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .header-date {
+        margin-top: 15px;
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .column {
+        width: 100%;
+    }
+}
